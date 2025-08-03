@@ -67,6 +67,6 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
 
 ### 📫 Let's Connect!
 
-- 🔗 **LinkedIn:** [Alireza Haeri](https://www.linkedin.com/in/alireza-haeri-dev)
+- 🔗 **LinkedIn:** [alireza-haeri-dev](https://www.linkedin.com/in/alireza-haeri-dev)
 - 🔗 **Telegram:** [AlirezaHaeriDev](https://t.me/AlirezaHaeriDev)
 - 🔗 **Email:** alireza.haeri.dev@gmail.com
