@@ -1,6 +1,10 @@
 ### Hi there, I'm Alireza 👋
 
 I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building clean and maintainable backend systems. I enjoy bringing ideas to life through code and am always eager to learn and apply modern software architecture principles.
+
+
+<br>
+
 ### 🛠️ My Tech Stack
 <table>
   <thead>
@@ -29,7 +33,7 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
   </tbody>
 </table>
 
----
+<br>
 
 ### 🚀 My Projects
 <table>
@@ -49,7 +53,7 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
   </tbody>
 </table>
 
----
+<br>
 
 ### 📊 My GitHub Stats
 
@@ -59,9 +63,10 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alireza-haeri&layout=compact&langs_count=8&theme=default" alt="Alireza's Top Languages"/>
 </p>
 
----
+<br>
 
 ### 📫 Let's Connect!
 
 - 🔗 **LinkedIn:** [Alireza Haeri](https://www.linkedin.com/in/alireza-haeri-dev)
+- 🔗 **Telegram:** [AlirezaHaeriDev](https://t.me/AlirezaHaeriDev)
 - ✉️ **Email:** alireza.haeri.dev@gmail.com
