@@ -42,19 +42,9 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
   </thead>
   <tbody>
     <tr>
-      <td width="180px"><a href="https://meetyab.ir" target="_blank">🤝 Meetyab.ir</a></td>
+      <td width="180px">🤝 <a href="https://meetyab.ir" target="_blank">Meetyab.ir</a></td>
       <td>🟢 Live</td>
-      <td>Scheduling platform to help teams find the best meeting times. Co-developed with <strong>@[نام کاربری دوستت]</strong>.</td>
-    </tr>
-    <tr>
-      <td><strong>🚧 Project Name 2</strong></td>
-      <td>🚧 In Development</td>
-      <td>Short description of your next cool project.</td>
-    </tr>
-    <tr>
-      <td><strong>💡 Project Name 3</strong></td>
-      <td>💡 Idea Phase</td>
-      <td>Short description of another upcoming idea.</td>
+      <td>Scheduling platform to help teams find the best meeting times. Co-developed with <strong><a href="https://github.com/amirebadifar87">@amirebadifar87</a></strong></td>
     </tr>
   </tbody>
 </table>
@@ -74,4 +64,4 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
 ### 📫 Let's Connect!
 
 - 🔗 **LinkedIn:** [Alireza Haeri](https://www.linkedin.com/in/alireza-haeri-dev)
-- ✉️ **Email:** alireza.haeri.dev@outlook.com
+- ✉️ **Email:** alireza.haeri.dev@gmail.com
