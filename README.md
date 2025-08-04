@@ -58,7 +58,9 @@ I'm a passionate .NET Developer from Yazd, Iran, with a strong focus on building
 ### 📊 My GitHub Stats
 
 <p align="center">
+  <!--
   <img src="https://github-readme-stats.vercel.app/api?username=alireza-haeri&show_icons=true&theme=default&include_all_commits=true&count_private=true" alt="Alireza's GitHub Stats"/>
+    -->
   <br/>
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alireza-haeri&layout=compact&langs_count=8&theme=default" alt="Alireza's Top Languages"/>
 </p>
