@@ -32,19 +32,19 @@ I'm a Back-End Developer specializing in building **scalable, high-performance, 
 ### 🚀 My Areas of Expertise
 
 #### 🏛️ **Architecture & System Design**
-- **Architectural Patterns:** Clean Architecture, Vertical Slice Architecture, Microservices
-- **Design Principles:** Domain-Driven Design (DDD), CQRS, SOLID
-- **System Concepts:** Scalability, Load Balancing, Caching, Software & Database Design
+- **Architectural Patterns:** Clean Architecture, Vertical Slice Architecture, Microservices  
+- **Design Principles:** Domain-Driven Design (DDD), CQRS, SOLID  
+- **System Concepts:** Scalability, Load Balancing, Caching, Software & Database Design  
 
 #### ⚙️ **Backend & API Development**
-- **Languages & Frameworks:** C#, .NET, ASP.NET Core (Web API, MVC)
-- **Data Access:** Entity Framework Core, Repository Pattern
-- **API Technologies:** RESTful APIs, AutoMapper, MediatR
+- **Languages & Frameworks:** C#, .NET, ASP.NET Core (Web API, MVC)  
+- **Data Access:** Entity Framework Core, Repository Pattern, Dapper  
+- **API Technologies:** RESTful APIs, AutoMapper, MediatR  
 
 #### 🗄️ **Database & Data Management**
-- **Databases:** Microsoft SQL Server, Relational Databases
-- **Languages & Skills:** T-SQL, Stored Procedures, Triggers
-- **Performance:** Query Performance Tuning, Database Indexing
+- **Databases:** Microsoft SQL Server, MongoDB, Redis  
+- **Languages & Skills:** T-SQL, Stored Procedures, Triggers  
+- **Performance:** Query Performance Tuning, Database Indexing  
 
 <br>
 
@@ -63,6 +63,10 @@ I'm a Back-End Developer specializing in building **scalable, high-performance, 
       <td>A live scheduling platform designed to help teams efficiently find the best meeting times. <i>(Co-developed with <strong><a href="https://github.com/amirebadifar87">@amirebadifar87</a></strong>)</i></td>
     </tr>
     <tr>
+      <td>📚 <a href="https://github.com/alireza-haeri/BookTracker" target="_blank"><strong>BookTracker API</strong></a></td>
+      <td>A practical <strong>portfolio-ready API</strong> built with ASP.NET Core Minimal API, MongoDB, and JWT. Focused on hands-on learning and demonstrating authentication, validation, and documentation with Scalar.</td>
+    </tr>
+    <tr>
       <td>🔐 <a href="https://github.com/alireza-haeri/IdentityProvider" target="_blank"><strong>IdentityProvider Playground</strong></a></td>
       <td>An educational project exploring deep concepts of Authentication & Authorization in .NET (JWT, OAuth, Custom Handlers).</td>
     </tr>
@@ -78,7 +82,6 @@ I'm a Back-End Developer specializing in building **scalable, high-performance, 
 ### 📊 My Top Languages
 
 <p align="center">
-  <!-- GitHub Stats are currently disabled -->
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alireza-haeri&layout=compact&langs_count=8&theme=default" alt="Alireza's Top Languages"/>
 </p>
 
@@ -88,6 +91,6 @@ I'm a Back-End Developer specializing in building **scalable, high-performance, 
 
 Feel free to reach out if you want to collaborate on a project or just want to chat.
 
-- 🔗 **LinkedIn:** [in/alireza-haeri-dev](https://www.linkedin.com/in/alireza-haeri-dev)
-- 🔗 **Telegram:** [@AlirezaHaeriDev](https://t.me/AlirezaHaeriDev)
-- 🔗 **Email:** alireza.haeri.dev@gmail.com
+- 🔗 **LinkedIn:** [in/alireza-haeri-dev](https://www.linkedin.com/in/alireza-haeri-dev)  
+- 🔗 **Telegram:** [@AlirezaHaeriDev](https://t.me/AlirezaHaeriDev)  
+- 🔗 **Email:** alireza.haeri.dev@gmail.com  
