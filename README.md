@@ -51,7 +51,7 @@ I love transforming complex business problems into **clean and efficient solutio
         A live scheduling platform designed to help teams efficiently find the best meeting times.  
         <br>
         <img src="https://img.shields.io/badge/Scheduling-0078D4?style=flat-square&logo=google-calendar&logoColor=white" alt="Scheduling"/>
-        <img src="https://img.shields.io/badge/Teammate-@amirebadifar87-333?style=flat-square&logo=github&logoColor=white" alt="Teammate"/>
+        <a href="https://github.com/amirebadifar87"><img src="https://img.shields.io/badge/Teammate-@amirebadifar87-333?style=flat-square&logo=github&logoColor=white" alt="Teammate"/></a>
       </td>
     </tr>
     <tr>
