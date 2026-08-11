@@ -51,7 +51,7 @@ xUnit · FluentAssertions · NSubstitute · WebApplicationFactory
       </td>
       <td>
         A live scheduling platform to help teams find the best meeting times.
-           <br/>
+        <br/>
         🌐 <a href="https://meetyab.ir">Landing</a>
         <br/><br/>
         <img src="https://img.shields.io/badge/ASP.NET_Core-5C2D91?style=flat-square&logo=dotnet&logoColor=white"/>
@@ -68,18 +68,6 @@ xUnit · FluentAssertions · NSubstitute · WebApplicationFactory
         <br/><br/>
         <img src="https://img.shields.io/badge/ASP.NET_Core-5C2D91?style=flat-square&logo=dotnet&logoColor=white"/>
         <img src="https://img.shields.io/badge/Elasticsearch-005571?style=flat-square&logo=elasticsearch&logoColor=white"/>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">📚</td>
-      <td align="center">
-        <a href="https://github.com/alireza-haeri/BookTracker"><strong>BookTracker</strong></a>
-      </td>
-      <td>
-        A learning-focused API covering back-end fundamentals.
-        <br/><br/>
-        <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"/>
-        <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white"/>
       </td>
     </tr>
     <tr>
@@ -104,6 +92,48 @@ xUnit · FluentAssertions · NSubstitute · WebApplicationFactory
         <br/><br/>
         <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/>
         <img src="https://img.shields.io/badge/Concurrency-FFA500?style=flat-square"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 📖 Open Learning Notes (Persian)
+
+I believe learning should be accessible in your native language. These are free, open-source resources I build and maintain for the Persian-speaking dev community.
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">🔬</td>
+      <td align="center">
+        <a href="https://github.com/alireza-haeri/BackendDeepDives"><strong>BackendDeepDives</strong></a>
+      </td>
+      <td>
+        Backend Under the Microscope — understanding <em>why</em> things work, not just <em>how</em>. Starts with database indexes (Hash, B-Tree, LSM).
+        <br/>
+        🌐 <a href="https://alireza-haeri.github.io/BackendDeepDives/">Read Online</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">🎨</td>
+      <td align="center">
+        <a href="https://github.com/alireza-haeri/Persian-Design-Patterns"><strong>Persian-Design-Patterns</strong></a>
+      </td>
+      <td>
+        All 24 software design patterns, explained in Persian with real C#/.NET examples.
+        <br/>
+        🌐 <a href="https://alireza-haeri.github.io/Persian-Design-Patterns">Read Online</a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">🐧</td>
+      <td align="center">
+        <a href="https://github.com/alireza-haeri/Lpic-Persian"><strong>Lpic-Persian</strong></a>
+      </td>
+      <td>
+        A complete Linux course in Persian, beginner to advanced, with hands-on exercises.
+        <br/>
+        🌐 <a href="https://alireza-haeri.github.io/Lpic-Persian/">Read Online</a>
       </td>
     </tr>
   </tbody>
