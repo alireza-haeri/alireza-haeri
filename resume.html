@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>علیرضا حایری — توسعه‌دهندهٔ بک‌اند | Alireza Haeri</title>
+<meta name="description" content="توسعه‌دهندهٔ بک‌اند .NET — سیستم‌های ماژولار، قابل‌نگهداری و production-minded">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E5ADB'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='bold' fill='%23F6F2E9' text-anchor='middle'%3EAH%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/300.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/900.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono/700.css">
+<style>
+/* ══════════════════════════════════════════
+TOKENS — blue accent
+══════════════════════════════════════════ */
+:root{
+--bg:#F6F2E9;--bg2:#EFEADD;--surface:#FDFBF5;--surface2:#F3EFE3;
+--line:#E0D8C3;--line2:#CDC3A8;--ink:#242920;--mut:#5F624F;--dim:#8F8C74;
+--acc:#1E5ADB;--acc-soft:rgba(30,90,219,.10);--acc-line:rgba(30,90,219,.42);
+--grn:#1F7A52;--grn-soft:rgba(31,122,82,.10);
+--amb:#C27803;--amb-soft:rgba(194,120,3,.12);
+--red:#C2492F;--red-soft:rgba(194,73,47,.09);
+--vio:#A05B2C;--vio-soft:rgba(160,91,44,.10);
+--blue:#2D6A9F;--blue-soft:rgba(45,106,159,.10);
+--teal:#2F8F83;--teal-soft:rgba(47,143,131,.11);
+--code-bg:#1C241E;--code-ink:#D8E2D4;
+--term-bg:#1A201B;--term-line:#2E372F;--term-bar:#212823;--term-mut:#8CA08E;
+--dot:rgba(36,41,32,.06);--shadow:0 1px 2px rgba(36,41,32,.05);
+--mono:'JetBrains Mono',Consolas,monospace;
+}
+html[data-theme="dark"]{
+--bg:#171A14;--bg2:#121510;--surface:#1F231B;--surface2:#1A1E16;
+--line:#31362A;--line2:#424836;--ink:#EAE7D9;--mut:#B3B29C;--dim:#83846E;
+--acc:#7CB1F2;--acc-soft:rgba(124,177,242,.14);--acc-line:rgba(124,177,242,.50);
+--grn:#5CC08F;--grn-soft:rgba(92,192,143,.13);
+--amb:#E3A63C;--amb-soft:rgba(227,166,60,.13);
+--red:#E5745A;--red-soft:rgba(229,116,90,.11);
+--vio:#D08B4F;--vio-soft:rgba(208,139,79,.12);
+--blue:#6BA8D4;--blue-soft:rgba(107,168,212,.13);
+--teal:#66C2B5;--teal-soft:rgba(102,194,181,.13);
+--code-bg:#121813;--code-ink:#D5E0D2;
+--term-bg:#14180F;--term-line:#2C332A;--term-bar:#1C2119;--term-mut:#7E937F;
+--dot:rgba(234,231,217,.05);--shadow:0 1px 2px rgba(0,0,0,.3);
+}
+/* ══════════════════════════════════════════
+BASE
+══════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+background-color:var(--bg);
+background-image:radial-gradient(var(--dot) .8px,transparent .8px);
+background-size:22px 22px;
+color:var(--ink);font-family:'Vazirmatn',Tahoma,system-ui,sans-serif;
+line-height:1.95;font-size:16.5px;overflow-x:hidden;
+transition:background-color .35s,color .35s;
+}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;background:var(--acc);z-index:60}
+html[lang="fa"] .en{display:none!important}
+html[lang="en"] .fa{display:none!important}
+html[lang="en"] body{line-height:1.75}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--acc-soft)}
+code,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:embed}
+img,svg{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.en{font-size:.86em}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ic.sm{width:14px;height:14px}
+.ic.fill{fill:currentColor;stroke:none}
+#prog{position:fixed;top:3px;left:0;height:3px;background:var(--amb);z-index:61;width:0;transition:width .1s linear}
+/* ═══════════ KEYFRAMES ═══════════ */
+@keyframes fadeUp{0%{opacity:0;transform:translateY(22px)}100%{opacity:1;transform:none}}
+@keyframes fadeDown{0%{opacity:0;transform:translateY(-16px)}100%{opacity:1;transform:none}}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes popIn{0%{opacity:0;transform:scale(.85)}60%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+@keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes shine{0%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(220%) skewX(-18deg)}}
+@keyframes drawline{to{stroke-dashoffset:0}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 var(--acc-soft)}70%{box-shadow:0 0 0 10px rgba(30,90,219,0)}100%{box-shadow:0 0 0 0 rgba(30,90,219,0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes countGlow{0%,100%{text-shadow:none}50%{text-shadow:0 0 18px var(--acc-soft)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes bannerPop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes dashMove{to{stroke-dashoffset:-14}}
+@keyframes hubPulse{0%{box-shadow:0 0 0 0 var(--acc-soft)}70%{box-shadow:0 0 0 20px rgba(30,90,219,0)}100%{box-shadow:0 0 0 0 rgba(30,90,219,0)}}
+@keyframes markerPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}60%{transform:translate(-50%,-50%) scale(1.18)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes flagWave{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
+@keyframes tipGlow{0%,100%{opacity:.55}50%{opacity:.95}}
+/* ═══════════ AVATAR (profile photo) ═══════════ */
+.avatar{position:relative;display:inline-block;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--acc-soft)}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-fb{display:none;place-items:center;width:100%;height:100%;background:var(--acc);color:var(--bg);font-weight:900;font-family:var(--mono);font-size:.85em}
+.avatar.sq{border-radius:22%}
+/* ═══════════ TOPBAR ═══════════ */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);animation:fadeDown .5s ease-out both}
+.topbar-in{display:flex;align-items:center;gap:12px;height:58px}
+.brand{font-weight:900;font-size:15px;white-space:nowrap;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.brand .avatar{width:30px;height:30px;border:2px solid var(--line);animation:breathe 4s ease-in-out infinite}
+.topbar-nav{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none}
+.topbar-nav::-webkit-scrollbar{display:none}
+.topbar-nav a{font-size:12px;color:var(--mut);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 11px;white-space:nowrap;transition:.25s}
+.topbar-nav a:hover{border-color:var(--acc-line);color:var(--acc);text-decoration:none;transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:14px;font-weight:600;cursor:pointer;transition:.25s;text-decoration:none;font-family:inherit}
+.btn:hover{border-color:var(--acc-line);color:var(--acc);text-decoration:none;transform:translateY(-2px)}
+.btn.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+html[data-theme="dark"] .btn.primary{color:#10141A}
+.btn.primary:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 6px 18px var(--acc-soft)}
+.btn.sm{padding:6px 12px;font-size:12.5px}
+.btn.iconb{padding:8px;width:36px;height:36px;display:grid;place-items:center;border-radius:8px}
+html[data-theme="dark"] .iconb svg.sun{display:none}
+html[data-theme="light"] .iconb svg.moon{display:none}
+.iconb:hover{background:var(--surface2)}
+.iconb svg{width:18px;height:18px;color:var(--mut)}
+/* ═══════════ HERO ═══════════ */
+.hero{position:relative;overflow:hidden;padding:70px 0 80px;border-bottom:1px solid var(--line)}
+.hero .shape{position:absolute;opacity:.5;pointer-events:none;animation:floaty 9s ease-in-out infinite}
+.hero .shape svg{width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2}
+.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-photo{width:96px;height:96px;border:3px solid var(--acc-line);margin:0 auto 22px;animation:popIn .7s cubic-bezier(.2,.9,.3,1.3) both,breathe 5s ease-in-out 1s infinite;box-shadow:0 12px 30px -8px var(--acc-soft)}
+.hero-role-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:12.5px;color:var(--acc);background:var(--acc-soft);border:1px solid var(--acc-line);padding:6px 16px;border-radius:7px;direction:ltr;animation:popIn .6s .05s cubic-bezier(.2,.9,.3,1.3) both;margin-bottom:18px}
+.hero-role-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);animation:blink 1.8s steps(1) infinite}
+.hero h1{font-size:clamp(34px,5.2vw,58px);font-weight:900;line-height:1.3;letter-spacing:-.01em;animation:fadeUp .7s .1s ease-out both}
+html[lang="en"] .hero h1{font-family:var(--mono);letter-spacing:-.03em}
+.uword{position:relative;display:inline-block;white-space:nowrap}
+.uscribble{position:absolute;left:0;right:0;bottom:-8px;width:100%;height:10px;overflow:visible}
+.uscribble path{stroke-dasharray:260;stroke-dashoffset:260;animation:drawline 1.1s .7s ease-out forwards}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--mut);max-width:64ch;line-height:1.9;margin:22px auto 0;animation:fadeUp .7s .25s ease-out both}
+.hero-sub b{color:var(--ink)}
+.qwin{background:var(--term-bg);border:1px solid var(--term-line);border-radius:14px;overflow:hidden;max-width:660px;width:100%;margin:36px auto 0;text-align:left;direction:ltr;box-shadow:0 26px 60px -22px rgba(0,0,0,.45);animation:fadeUp .8s .4s ease-out both}
+.qwin-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--term-bar);border-bottom:1px solid var(--term-line)}
+.qwin-bar i{width:12px;height:12px;border-radius:50%}
+.qwin-bar i:nth-child(1){background:#E0655A}.qwin-bar i:nth-child(2){background:#E5B45A}.qwin-bar i:nth-child(3){background:#58B78C}
+.qwin-bar span{margin-left:12px;font-family:var(--mono);font-size:12.5px;color:var(--term-mut)}
+.term{font-family:var(--mono);font-size:14px;line-height:1.8;color:var(--code-ink);padding:20px;min-height:230px;white-space:pre-wrap}
+.term .pr{color:#5CC08F}.term .cm{color:#7E937F}.term .hl{color:#E5B45A}.term .ok{color:#5CC08F;font-weight:600}
+.cursor{display:inline-block;width:8px;height:16px;background:#5CC08F;vertical-align:middle;animation:blink 1s steps(1) infinite}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:32px}
+.hero-chips span{font-size:12.5px;color:var(--mut);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 15px;display:inline-flex;gap:8px;align-items:center;transition:.25s;animation:popIn .5s ease-out both}
+.hero-chips span:hover{transform:translateY(-3px);border-color:var(--acc-line);color:var(--ink)}
+.hero-chips span b{color:var(--acc);font-weight:700;font-family:var(--mono);font-size:11px}
+.hero-chips span:nth-child(1){animation-delay:.5s}.hero-chips span:nth-child(2){animation-delay:.6s}
+.hero-chips span:nth-child(3){animation-delay:.7s}.hero-chips span:nth-child(4){animation-delay:.8s}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:30px;animation:fadeUp .7s .55s ease-out both}
+.hero-actions .btn{padding:14px 32px;font-size:15.5px;font-weight:700}
+.scroll-hint{margin:46px auto 0;color:var(--dim);animation:fadeIn 1s 1.2s both}
+.scroll-hint svg{width:24px;height:24px;animation:bounce 1.8s ease-in-out infinite}
+/* ═══════════ STATS ═══════════ */
+.stats{padding:0;border-bottom:1px dashed var(--line2);background:var(--surface)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:34px 20px;text-align:center;border-inline-end:1px dashed var(--line2);position:relative}
+.stat:last-child{border-inline-end:none}
+.stat .num{font-family:var(--mono);font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--acc);line-height:1;animation:countGlow 3s ease-in-out infinite;direction:ltr}
+.stat .lbl{font-size:13px;color:var(--mut);margin-top:8px}
+.stat svg{width:22px;height:22px;color:var(--dim);margin:0 auto 8px;display:block}
+/* ═══════════ SECTIONS ═══════════ */
+section{padding:64px 0;scroll-margin-top:72px}
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.section-num{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--acc);background:var(--acc-soft);border:1px solid var(--acc-line);padding:5px 11px;border-radius:7px}
+.section-head h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;line-height:1.4;letter-spacing:-.01em}
+.lead{font-size:17px;line-height:1.95;color:var(--ink);margin-bottom:8px;max-width:74ch}
+.lead b{color:var(--acc)}
+/* ═══════════ SKILL ROAD ═══════════ */
+.stack{border-bottom:1px dashed var(--line2)}
+.road-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin-top:26px;overflow:hidden;position:relative}
+.road-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--grn),var(--vio),var(--red),var(--blue),var(--amb),var(--teal));opacity:.7;z-index:5}
+.road{position:relative;padding:10px 0 4px}
+.road-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#branchSvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+#roadHalo{fill:none;stroke:var(--acc);stroke-width:34;stroke-linecap:round;stroke-linejoin:round;opacity:.06}
+#roadEdge{fill:none;stroke:url(#edgeGrad);stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+#roadAsphalt{fill:none;stroke:var(--surface2);stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="dark"] #roadAsphalt{stroke:#242A21}
+#roadCenter{fill:none;stroke:var(--acc);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:4 10;opacity:.45;animation:dashMove 1.3s linear infinite}
+#roadProgress{fill:none;stroke:url(#progGrad);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px var(--acc-line))}
+.prog-tip{stroke:var(--surface);stroke-width:2.5;filter:drop-shadow(0 0 9px currentColor);animation:tipGlow 1.6s ease-in-out infinite}
+.prog-tip-halo{opacity:.18;animation:tipGlow 1.6s ease-in-out infinite}
+.traveler-glow{fill:var(--acc);opacity:.2}
+.traveler-core{fill:var(--acc);stroke:var(--surface);stroke-width:2}
+.concline{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.85;
+transition:stroke-dashoffset .7s ease var(--bd,0s),opacity .35s}
+.concline.grown{stroke-dashoffset:0}
+.hub{position:relative;height:120px}
+.hub-node{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+.hub-ava{width:70px;height:70px;border-radius:50%;overflow:hidden;border:3px solid var(--acc);margin:0 auto;animation:hubPulse 3s ease-out infinite;background:var(--acc-soft)}
+.hub-ava img{width:100%;height:100%;object-fit:cover;display:block}
+.hub-lbl{margin-top:8px;font-weight:800;font-size:13px;line-height:1.5}
+.hub-lbl .mono{display:block;font-size:8.5px;color:var(--acc);letter-spacing:.16em;font-weight:700}
+.station{position:relative;min-height:96px}
+.s-marker{position:absolute;top:50%;transform:translate(-50%,-50%) scale(.3);opacity:0;width:42px;height:42px;border-radius:50%;background:var(--surface);border:3px solid var(--sc);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:12px;color:var(--sc);z-index:4;box-shadow:0 0 0 5px color-mix(in srgb,var(--sc) 14%,transparent);transition:box-shadow .3s}
+.station.in .s-marker{animation:markerPop .6s cubic-bezier(.2,.9,.3,1.4) forwards}
+.s-card{position:absolute;top:50%;transform:translateY(-50%);background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc);border-radius:10px;padding:10px 13px 12px;box-shadow:var(--shadow);opacity:0;z-index:2;transition:opacity .5s ease .15s,transform .55s cubic-bezier(.2,.8,.3,1.2) .15s,border-color .3s}
+.station.pos-l .s-card{transform:translateY(-50%) translateX(22px)}
+.station.pos-r .s-card{transform:translateY(-50%) translateX(-22px)}
+.station.in .s-card{opacity:1;transform:translateY(-50%)}
+.s-card:hover{border-color:var(--sc)}
+.s-head{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.s-dot{width:9px;height:9px;border-radius:50%;background:var(--sc);flex-shrink:0;box-shadow:0 0 7px color-mix(in srgb,var(--sc) 65%,transparent);animation:floaty2 4s ease-in-out infinite}
+.s-head h3{font-size:12.5px;font-weight:800;white-space:nowrap}
+.s-count{font-family:var(--mono);font-size:8.5px;font-weight:700;color:var(--sc);background:color-mix(in srgb,var(--sc) 12%,transparent);border-radius:5px;padding:1px 6px;margin-inline-start:auto;flex-shrink:0}
+.s-desc{font-size:10.5px;color:var(--mut);line-height:1.8;margin-bottom:9px}
+.s-chips{display:flex;flex-wrap:wrap;gap:6px}
+.s-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--mut);background:var(--surface2);border:1.5px solid var(--line);border-radius:7px;padding:4px 9px;direction:ltr;white-space:nowrap;cursor:pointer;transition:transform .25s cubic-bezier(.2,.9,.3,1.4),border-color .25s,color .25s,box-shadow .25s}
+.s-chip .tlogo{width:13px;height:13px;flex-shrink:0;transition:transform .25s}
+.s-chip:hover{transform:translateY(-3px) scale(1.06);border-color:var(--sc);color:var(--ink);box-shadow:0 7px 16px -6px color-mix(in srgb,var(--sc) 55%,transparent)}
+.s-chip:hover .tlogo{transform:scale(1.18)}
+.end{position:relative;height:90px}
+.end-node{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%) scale(.6);text-align:center;z-index:2;opacity:0;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1.4)}
+.end.in .end-node{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.flag{display:inline-block;animation:flagWave 3s ease-in-out infinite;transform-origin:bottom left}
+.flag svg{width:32px;height:32px;color:var(--amb)}
+.end-lbl{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.14em;font-weight:700;margin-top:2px}
+.map-hint{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:13px 18px;border-top:1px dashed var(--line2);background:var(--surface2);font-size:12.5px;color:var(--mut)}
+.map-hint svg{width:15px;height:15px;color:var(--amb);flex-shrink:0}
+.map-hint b{color:var(--acc)}
+/* ═══════════ MODAL ═══════════ */
+.modal-bg{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:rgba(18,22,18,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-bg.show{opacity:1;pointer-events:auto}
+.modal{width:min(470px,100%);background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);transform:translateY(18px) scale(.95);transition:transform .35s cubic-bezier(.2,.9,.3,1.3)}
+.modal-bg.show .modal{transform:none}
+.modal-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.modal-bar i{width:11px;height:11px;border-radius:50%}
+.modal-bar i:nth-child(1){background:#E0655A}.modal-bar i:nth-child(2){background:#E5B45A}.modal-bar i:nth-child(3){background:#58B78C}
+.modal-bar .mcat{margin-inline-start:9px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em}
+.modal-x{margin-inline-start:auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--mut);transition:.2s;cursor:pointer}
+.modal-x:hover{background:var(--red-soft);color:var(--red)}
+.modal-x svg{width:15px;height:15px}
+.modal-body{padding:24px 26px 26px;text-align:center}
+.modal-name{font-family:var(--mono);font-weight:700;font-size:24px;direction:ltr;display:flex;align-items:center;justify-content:center;gap:10px}
+.modal-name .tlogo{width:22px;height:22px}
+.modal-lbl{font-size:11.5px;font-weight:700;color:var(--amb);margin:16px 0 8px}
+.modal-body p{font-size:14.5px;line-height:2;color:var(--ink);text-align:start}
+.modal-foot{margin-top:20px;display:flex;align-items:center;justify-content:center;gap:9px;font-family:var(--mono);font-size:11px;color:var(--mut);border-top:1px dashed var(--line2);padding-top:16px}
+.mdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+/* ═══════════ PROJECTS ═══════════ */
+.projects{border-bottom:1px dashed var(--line2)}
+.proj-list{display:grid;gap:22px;margin-top:26px}
+.feat-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .3s,box-shadow .35s,transform .35s;position:relative}
+.feat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--tc,var(--acc));transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.2,.8,.3,1);z-index:3}
+html[dir="ltr"] .feat-card::before{transform-origin:left}
+.feat-card:hover{border-color:var(--acc-line);box-shadow:0 18px 44px -14px var(--acc-soft);transform:translateY(-4px)}
+.feat-card:hover::before{transform:scaleX(1)}
+.feat-top{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.feat-info{padding:30px 30px 28px;display:flex;flex-direction:column}
+.feat-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.pnum{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--dim);letter-spacing:.06em}
+.feat-head h3{font-size:24px;font-weight:900;letter-spacing:-.01em;font-family:var(--mono);direction:ltr}
+.feat-desc{font-size:14.5px;line-height:1.9;color:var(--mut);margin:10px 0 16px}
+.feat-desc b{color:var(--ink)}
+.ftags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.ftags span{font-size:11px;color:var(--dim);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 9px;font-family:var(--mono);direction:ltr}
+.feat-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}
+.pstatus{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.pstatus.live{background:var(--grn-soft);color:var(--grn);animation:pulseRing 2.4s ease-out infinite}
+.pstatus.oss{background:var(--blue-soft);color:var(--blue)}
+.pstatus.lab{background:var(--amb-soft);color:var(--amb)}
+.pstatus.pub{background:var(--grn-soft);color:var(--grn)}
+.pstatus.fav{background:var(--amb-soft);color:var(--amb)}
+.pstatus.course{background:var(--blue-soft);color:var(--blue)}
+.pstatus .pdot{width:6px;height:6px;border-radius:50%;background:currentColor}
+/* stages (dark windows) */
+.feat-stage{background:var(--term-bg);border-inline-start:1px solid var(--term-line);display:flex;flex-direction:column;justify-content:center}
+.feat-stage .qwin-bar{border-top:0}
+.st-cap{direction:rtl;text-align:center;font-size:13.5px;font-weight:500;color:var(--term-mut);min-height:26px;margin:10px 14px 6px;transition:opacity .24s}
+html[lang="en"] .st-cap{direction:ltr}
+.st-cap b{color:var(--code-ink)}
+.st-cap.switching{opacity:0}
+.mini-banner{display:none;align-items:center;justify-content:center;gap:9px;margin:14px 14px 18px;padding:11px 16px;background:var(--acc);border-radius:9px;font-size:12.5px;font-weight:700;color:#F6F2E9;animation:bannerPop .4s ease-out;text-align:center}
+html[data-theme="dark"] .mini-banner{color:#10141A}
+.mini-banner.show{display:flex}
+.mini-banner svg{width:16px;height:16px;flex-shrink:0}
+/* ── SamarPlanner modules ── */
+.mod-stage{direction:ltr;padding:6px 16px 18px}
+.mod-area{display:flex;justify-content:center;gap:8px}
+.mod-box{width:18%;max-width:84px;display:flex;flex-direction:column;align-items:center;padding:9px 4px 7px;border-radius:10px;border:1px dashed rgba(140,160,142,.25);transition:border-color .4s,background .4s}
+.mod-box.active{border-color:rgba(140,160,142,.5);background:rgba(255,255,255,.02)}
+.mod-cells{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.mod-cells i{aspect-ratio:1/1;background:#39423B;border-radius:3px;transition:background .3s,box-shadow .3s}
+.mod-box.m1 i.lit{background:#5CC08F;box-shadow:0 0 7px rgba(92,192,143,.45)}
+.mod-box.m2 i.lit{background:#E3A63C;box-shadow:0 0 7px rgba(227,166,60,.45)}
+.mod-box.m3 i.lit{background:#6BA8D4;box-shadow:0 0 7px rgba(107,168,212,.45)}
+.mod-box.m4 i.lit{background:#D08B4F;box-shadow:0 0 7px rgba(208,139,79,.45)}
+.mod-box.m5 i.lit{background:#E5745A;box-shadow:0 0 7px rgba(229,116,90,.45)}
+.mod-label{font-family:var(--mono);font-size:9px;font-weight:600;color:#77897A;margin-top:8px;letter-spacing:.04em;transition:color .4s;text-align:center}
+.mod-box.m1.active .mod-label{color:#5CC08F}
+.mod-box.m2.active .mod-label{color:#E3A63C}
+.mod-box.m3.active .mod-label{color:#6BA8D4}
+.mod-box.m4.active .mod-label{color:#D08B4F}
+.mod-box.m5.active .mod-label{color:#E5745A}
+/* ── Searchify search ── */
+.sf-body{padding:8px 16px 18px;direction:ltr;font-family:var(--mono);font-size:12px}
+.sf-q{color:var(--term-mut);margin-bottom:12px;min-height:20px}
+.sf-q .method{color:#5CC08F}
+.sf-q .typed{color:#E5B45A}
+.sf-fields{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.sf-fields span{font-size:10px;color:#77897A;border:1px solid #39423B;border-radius:6px;padding:3px 9px;transition:.3s}
+.sf-fields span.on{color:#6BA8D4;border-color:#6BA8D4;background:rgba(107,168,212,.1);box-shadow:0 0 8px rgba(107,168,212,.25)}
+.sf-row{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:7px;color:#CFE0CF;background:#232B24;margin-bottom:6px;border:1px solid transparent;transition:.4s}
+.sf-row .s-ic{width:15px;height:15px;flex-shrink:0;opacity:0;transition:.3s}
+.sf-row.hit{border-color:rgba(92,192,143,.5)}
+.sf-row.hit .s-ic{opacity:1;color:#5CC08F}
+.sf-row.hit b{color:#5CC08F;background:rgba(92,192,143,.12);padding:0 2px;border-radius:3px}
+.sf-row.off{opacity:.28;text-decoration:line-through}
+.sf-row.off .s-ic{opacity:1;color:#E5745A}
+.sf-stats{color:#5CC08F;font-size:11.5px;opacity:0;transition:.35s;margin-top:8px}
+.sf-stats.show{opacity:1}
+/* ── IdentityProvider journey ── */
+.ip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:6px 16px 16px;direction:ltr}
+.ip-box{position:relative;background:#232B24;border:1px solid #39423B;border-radius:8px;padding:13px 8px 10px;text-align:center;opacity:.5;transform:translateY(4px);transition:.4s cubic-bezier(.2,.8,.3,1.3)}
+.ip-box::before{content:"";position:absolute;top:-1px;left:10px;width:18px;height:5px;border-radius:0 0 4px 4px;background:#39423B;transition:.4s}
+.ip-box.on{opacity:1;transform:none;border-color:var(--bc);box-shadow:0 0 14px rgba(255,255,255,.05)}
+.ip-box.on::before{background:var(--bc)}
+.ip-name{font-family:var(--mono);font-size:11px;font-weight:700;color:#8CA08E;letter-spacing:.03em;transition:.3s}
+.ip-box.on .ip-name{color:var(--bc)}
+.ip-sub{font-size:8.5px;color:#77897A;margin-top:2px;line-height:1.5}
+/* ═══════════ NOTES — OPEN BOOKSHELF ═══════════ */
+.notes{border-bottom:1px dashed var(--line2)}
+.fa-quote{display:inline-flex;gap:12px;align-items:center;background:var(--amb-soft);border:1px solid rgba(194,120,3,.3);border-radius:10px;padding:12px 20px;margin:14px 0 6px;font-size:15px;font-weight:700;color:var(--amb)}
+.fa-quote svg{flex-shrink:0}
+.star-pill{display:inline-flex;align-items:center;gap:5px;background:var(--amb);color:#FDFBF5;font-size:11px;font-weight:700;padding:3px 11px;border-radius:999px;font-family:var(--mono);animation:wiggle 4s ease-in-out infinite}
+.shelf-stats{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 18px}
+.shelf-stats span{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);border:1px dashed var(--line2);background:var(--surface);border-radius:999px;padding:6px 16px;transition:.25s}
+.shelf-stats span:hover{transform:translateY(-2px);border-color:var(--acc-line);color:var(--ink)}
+.shelf-stats b{color:var(--acc);font-weight:800;font-family:var(--mono)}
+.note-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .3s,box-shadow .35s,transform .35s;position:relative}
+.note-card::before{content:"";position:absolute;top:0;bottom:0;inset-inline-start:0;width:5px;background:var(--nc,var(--acc));z-index:3;transition:box-shadow .35s}
+.note-card:hover{border-color:var(--acc-line);box-shadow:0 18px 44px -14px var(--acc-soft);transform:translateY(-4px)}
+.note-card:hover::before{box-shadow:0 0 16px var(--nc)}
+.note-card.starred{border-color:rgba(194,120,3,.55)}
+.note-card .feat-info{padding-inline-start:34px}
+.nstats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.nstats span{font-family:var(--mono);font-size:11px;color:var(--mut);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:3px 10px;direction:ltr}
+.nstats b{color:var(--nc,var(--acc));font-weight:700}
+.shelf{position:relative;display:flex;gap:22px;margin-top:30px;align-items:stretch}
+.shelf-spine{position:relative;width:2px;background:var(--line);flex-shrink:0}
+.shelf-spine .prog-line{position:absolute;top:0;inset-inline-start:0;width:2px;background:var(--acc);height:0;transition:height 1.2s ease}
+.shelf-items{flex:1;display:grid;gap:26px;min-width:0}
+.shelf-plank{height:10px;border-radius:3px;background:linear-gradient(180deg,var(--line2),var(--line));box-shadow:0 7px 0 -4px var(--line)}
+/* ── VOL-01 stage · microscope descent ── */
+.bd-stage{padding:4px 14px 16px;direction:ltr;display:grid;grid-template-columns:44px 1fr;gap:12px}
+.bd-gauge{position:relative;background:#0F140E;border:1px solid #2C332A;border-radius:8px;padding:12px 0;display:flex;flex-direction:column;justify-content:space-between;align-items:center;min-height:250px}
+.bd-gauge::before{content:"";position:absolute;left:50%;top:18px;bottom:18px;width:2px;background:#2C332A;transform:translateX(-50%)}
+.bd-gauge-fill{position:absolute;left:50%;top:18px;width:2px;background:linear-gradient(180deg,#7CB1F2,#5CC08F,#6BA8D4,#E3A63C,#E5745A);transform:translateX(-50%);height:0;transition:height .7s cubic-bezier(.2,.8,.3,1)}
+.bd-tick{position:relative;width:12px;height:12px;border-radius:50%;background:#0F140E;border:2px solid #39423B;transition:.4s;z-index:1}
+.bd-tick.active{border-color:#E3A63C;background:#E3A63C;box-shadow:0 0 9px rgba(227,166,60,.7)}
+.bd-viewport{position:relative;height:250px;background:radial-gradient(circle at 50% 45%,#1A211B,#0F140E 75%);border:1px solid #2C332A;border-radius:8px;overflow:hidden}
+.bd-scene{position:absolute;inset:0;opacity:0;pointer-events:none}
+.bd-scene.on{animation:bdSceneIn .5s forwards}
+@keyframes bdSceneIn{from{opacity:0}to{opacity:1}}
+.bd-scene svg{width:100%;height:100%;display:block}
+.bd-scene .pop{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}
+.bd-scene .fade{opacity:0}
+.bd-scene .rise{opacity:0;transform:translateY(14px)}
+.bd-scene .draw{stroke-dasharray:1;stroke-dashoffset:1}
+.bd-scene.on .pop{animation:bdPop .5s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:var(--d,0s)}
+.bd-scene.on .fade{animation:bdFade .6s forwards;animation-delay:var(--d,0s)}
+.bd-scene.on .rise{animation:bdRise .5s forwards;animation-delay:var(--d,0s)}
+.bd-scene.on .draw{animation:bdDraw .5s forwards;animation-delay:var(--d,0s)}
+@keyframes bdPop{to{opacity:1;transform:scale(1)}}
+@keyframes bdFade{to{opacity:1}}
+@keyframes bdRise{to{opacity:1;transform:translateY(0)}}
+@keyframes bdDraw{to{stroke-dashoffset:0}}
+.bd-scene .s1-packet{opacity:0}
+.bd-scene.on .s1-packet{animation:bdS1Packet 1.1s cubic-bezier(.2,.8,.3,1) forwards;animation-delay:.5s}
+@keyframes bdS1Packet{from{opacity:0;transform:translateX(0)}to{opacity:1;transform:translateX(58px)}}
+.bd-scene .s1-lenspop{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}
+.bd-scene.on .s1-lenspop{animation:bdPop .6s cubic-bezier(.2,.9,.3,1.5) forwards;animation-delay:1.5s}
+.bd-scene.on .s1-lenspulse{animation:bdLensPulse 2.6s ease-in-out 2.1s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bdLensPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.bd-scene .s2-dot{opacity:0}
+.bd-scene.on .s2-dot{animation:bdS2Move 2s cubic-bezier(.45,.05,.55,.95) forwards;animation-delay:.7s}
+@keyframes bdS2Move{0%{opacity:1;transform:translateX(0)}100%{opacity:1;transform:translateX(242px)}}
+.bd-scene.on .blit{animation:bdBoxLit .5s forwards;animation-delay:var(--d,0s)}
+@keyframes bdBoxLit{to{stroke:#E3A63C;fill:#2E2418}}
+.bd-scene .s3-scan{opacity:0}
+.bd-scene.on .s3-scan{animation:bdS3Scan 1.6s cubic-bezier(.4,0,.6,1) forwards;animation-delay:.6s}
+@keyframes bdS3Scan{0%{opacity:.9;transform:translateY(0)}70%{opacity:.9;transform:translateY(60px)}100%{opacity:0;transform:translateY(60px)}}
+.bd-scene.on .pg-target{animation:bdPageLit .5s forwards;animation-delay:1.9s}
+@keyframes bdPageLit{to{fill:#2E2418;stroke:#E3A63C}}
+.bd-scene .s3-spark{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}
+.bd-scene.on .s3-spark{animation:bdPop .4s cubic-bezier(.2,.9,.3,1.5) forwards;animation-delay:2.1s}
+.bd-scene .path{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}
+.bd-scene.on .path{animation:bdPathNode .55s forwards;animation-delay:var(--d,0s)}
+@keyframes bdPathNode{0%{opacity:0;transform:scale(.3)}55%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1);fill:var(--lit,#E3A63C);filter:drop-shadow(0 0 6px var(--lit,#E3A63C))}}
+.bd-scene .node{fill:#39423B}
+.bd-scene.on .s4-found{animation:bdFound .5s forwards;animation-delay:2.2s}
+@keyframes bdFound{to{fill:#1E2E24;stroke:#5CC08F;filter:drop-shadow(0 0 6px rgba(92,192,143,.6))}}
+.bd-scene .core,.bd-scene .core-in{transform-box:fill-box;transform-origin:center}
+.bd-scene .core{opacity:0;transform:scale(.3)}
+.bd-scene.on .core{animation:bdPop .5s forwards,bdCorePulse 1.8s .5s ease-in-out infinite}
+@keyframes bdCorePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+.bd-scene .core-in{opacity:0}
+.bd-scene.on .core-in{animation:bdFade .5s .3s forwards}
+.bd-scene .ring{opacity:0;transform-box:fill-box;transform-origin:center}
+.bd-scene.on .ring{animation:bdRing 2.4s ease-out infinite;animation-delay:var(--d,0s)}
+@keyframes bdRing{0%{opacity:.55;transform:scale(.5)}100%{opacity:0;transform:scale(2.3)}}
+.bd-scene .s5-rays{opacity:0}
+.bd-scene.on .s5-rays{animation:bdFade .8s .4s forwards,bdRaysSpin 16s .4s linear infinite;transform-box:view-box;transform-origin:160px 115px}
+@keyframes bdRaysSpin{to{transform:rotate(360deg)}}
+/* ── VOL-02 stage · 3 tiers (SVG icons, English only) ── */
+.dp-stage{padding:4px 14px 16px;direction:ltr}
+.dp-tier{margin-bottom:10px;padding:8px 10px;border-radius:8px;background:#1C241E;border:1px solid #2C332A;transition:.4s}
+.dp-tier.active{border-color:var(--tc);box-shadow:0 0 16px color-mix(in srgb,var(--tc) 35%,transparent)}
+.dp-tier.done .dp-check{opacity:1;transform:scale(1)}
+.dp-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.dp-ticon{width:15px;height:15px;flex-shrink:0;color:var(--tc);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dp-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--tc)}
+.dp-count{font-family:var(--mono);font-size:9px;color:#77897A;margin-inline-start:auto}
+.dp-check{width:16px;height:16px;border-radius:50%;background:#5CC08F;display:grid;place-items:center;opacity:0;transform:scale(0);transition:.4s}
+.dp-chips{display:flex;flex-wrap:wrap;gap:5px}
+.dp-chip{font-family:var(--mono);font-size:10.5px;font-weight:600;padding:4px 9px;border-radius:6px;background:#232B24;border:1px solid #39423B;color:#8CA08E;transition:.3s;display:inline-flex;align-items:center;gap:5px}
+.dp-chip .dp-ic{width:13px;height:13px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--tc);transition:color .3s}
+.dp-chip.on{background:var(--tc);color:#10141A;border-color:var(--tc);transform:scale(1.04)}
+.dp-chip.on .dp-ic{color:#10141A}
+/* ── VOL-03 stage · linux terminal ── */
+.lp-stage{padding:4px 14px 16px;direction:ltr}
+.lp-term{font-family:var(--mono);font-size:11.5px;line-height:1.7;color:#D8E2D4;background:#0F140E;border:1px solid #2C332A;border-radius:8px;padding:14px;min-height:200px}
+.lp-term .pp{color:#5CC08F}.lp-term .path{color:#6BA8D4}.lp-term .out{color:#8CA08E}
+.lp-term .ok{color:#5CC08F;font-weight:700}.lp-term .warn{color:#E3A63C}.lp-term .head{color:#77897A;font-weight:700}
+/* ═══════════ CONTACT ═══════════ */
+.author-big{display:flex;align-items:center;gap:26px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--acc);border-radius:16px;padding:30px 34px;margin-top:30px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+.author-big:hover{transform:translateY(-4px);box-shadow:0 16px 40px -14px var(--acc-soft)}
+.author-big .avatar{width:88px;height:88px;border:3px solid var(--line);animation:breathe 5s ease-in-out infinite}
+.author-info-big{flex:1}
+.author-name-big{font-weight:800;font-size:21px;margin-bottom:4px}
+.author-role-big{font-size:14px;color:var(--mut);margin-bottom:14px}
+.author-links-big{display:flex;gap:10px;flex-wrap:wrap}
+.cta-mail{display:flex;justify-content:center;margin-top:26px}
+.cta-mail .btn{padding:16px 40px;font-size:16px;font-weight:800;font-family:var(--mono);direction:ltr}
+/* ═══════════ FOOTER ═══════════ */
+footer{padding:50px 0 60px}
+.foot-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.foot-profile{display:flex;align-items:center;gap:14px}
+.foot-profile .avatar{width:42px;height:42px;border:2px solid var(--line);border-radius:10px}
+.foot-profile .name{font-weight:700;font-size:14px}
+.foot-profile .role{font-size:12px;color:var(--mut)}
+.foot-links{display:flex;gap:8px;flex-wrap:wrap}
+.foot-meta{text-align:center;color:var(--dim);font-size:13px;line-height:2;margin-top:26px;padding-top:26px;border-top:1px dashed var(--line2)}
+.foot-meta a{color:var(--acc)}
+.foot-meta .mono{color:var(--red)}
+/* ═══════════ REVEAL + RESPONSIVE + REDUCED ═══════════ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv-scale{opacity:0;transform:scale(.9);transition:.7s cubic-bezier(.2,.8,.3,1.2)}
+.rv-scale.in{opacity:1;transform:scale(1)}
+@media(max-width:900px){
+.feat-top{grid-template-columns:1fr}
+.feat-stage{border-inline-start:0;border-top:1px solid var(--term-line)}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.stat:nth-child(2){border-inline-end:none}
+.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px dashed var(--line2)}
+.author-big{flex-direction:column;text-align:center}
+.author-links-big{justify-content:center}
+.foot-grid{grid-template-columns:1fr;text-align:center}
+.foot-profile{justify-content:center}
+.foot-links{justify-content:center}
+}
+@media(max-width:760px){
+#stack{padding:40px 0 56px}
+.s-head h3{font-size:11.5px}
+.s-chip{font-size:8.5px;padding:3px 6px;gap:5px}
+.s-chip .tlogo{width:11px;height:11px}
+.s-desc{display:none}
+.hub{height:110px}
+.dp-chip{font-size:9.5px;padding:3px 7px}
+}
+@media(max-width:600px){
+.hero{padding:46px 0 56px}
+.hero-photo{width:72px;height:72px}
+.hero-actions .btn{padding:12px 24px;font-size:14px}
+.term{font-size:11.5px;padding:16px;min-height:200px}
+.feat-info{padding:22px}
+.author-big{padding:24px}
+.bd-stage{grid-template-columns:34px 1fr;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+.traveler{display:none}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<!-- ═══════════ SVG ICONS ═══════════ -->
+<svg style="display:none">
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8 0 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></symbol>
+<symbol id="i-telegram" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M15.09 14c.58-.45 1-1.12 1-1.93V12a6 6 0 0 0-8.18-5.58A6 6 0 0 0 8 12v.07c0 .81.42 1.48 1 1.93"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4c4-2.5 8 2.5 14 0v9c-6 2.5-10-2.5-14 0" fill="currentColor" stroke="none"/></symbol>
+<!-- ═══ tech logos ═══ -->
+<symbol id="tl-generic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/></symbol>
+<symbol id="tl-csharp" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="monospace" font-weight="700" font-size="13" fill="currentColor">C#</text></symbol>
+<symbol id="tl-dotnet" viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="monospace" font-weight="700" font-size="8.5" fill="currentColor">.NET</text></symbol>
+<symbol id="tl-aspnet" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.2"/></symbol>
+<symbol id="tl-efcore" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m9.5 11 -2 2.5 2 2.5M14.5 11l2 2.5-2 2.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="tl-sql" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+<symbol id="tl-cleanarch" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/></symbol>
+<symbol id="tl-modular" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 3v9M12 12l8-4.5M12 12 4 7.5" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+<symbol id="tl-ddd" viewBox="0 0 24 24"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5L12 2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></symbol>
+<symbol id="tl-cqrs" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13M17 8l-3-3M17 8l-3 3"/><path d="M20 16H7M7 16l3-3M7 16l3 3"/></g></symbol>
+<symbol id="tl-mediatr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/></g><g fill="currentColor"><circle cx="12" cy="3" r="1.6"/><circle cx="12" cy="21" r="1.6"/><circle cx="3" cy="12" r="1.6"/><circle cx="21" cy="12" r="1.6"/></g></symbol>
+<symbol id="tl-fvalid" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6l8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="tl-identity" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="tl-jwt" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="12" r="1.5" fill="currentColor"/><path d="M13 12h8M18 12v3M21 12v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="tl-keycloak" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="15.5" r="1.5" fill="currentColor"/></symbol>
+<symbol id="tl-docker" viewBox="0 0 24 24"><g fill="currentColor"><rect x="4" y="10" width="3.4" height="3.4" rx=".5"/><rect x="8.4" y="10" width="3.4" height="3.4" rx=".5"/><rect x="12.8" y="10" width="3.4" height="3.4" rx=".5"/><rect x="8.4" y="5.6" width="3.4" height="3.4" rx=".5"/></g><path d="M2.5 15.2h15.6c1.8 0 3-1.2 3.4-3-1 .3-1.9.2-2.5-.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="tl-traefik" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6"/><path d="M9 12c3 0 3-6 6-6h4"/><path d="M9 12h10"/><path d="M9 12c3 0 3 6 6 6h4"/></g><g fill="currentColor"><circle cx="20.5" cy="6" r="1.6"/><circle cx="20.5" cy="12" r="1.6"/><circle cx="20.5" cy="18" r="1.6"/></g></symbol>
+<symbol id="tl-git" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 8.5v7M18 8.5c0 4-5 4.5-9 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="tl-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8 0 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+<symbol id="tl-redis" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 3 7l9 4 9-4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></g></symbol>
+<symbol id="tl-elastic" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 10.5h9M8 7.5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="tl-mongodb" viewBox="0 0 24 24"><path d="M12 2c3 4 5 7 5 11 0 4-2.2 7.5-5 9-2.8-1.5-5-5-5-9 0-4 2-7 5-11z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 6v16" stroke="currentColor" stroke-width="1.2"/></symbol>
+<symbol id="tl-linux" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m6 9 3 3-3 3M12 15h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="tl-bash" viewBox="0 0 24 24"><path d="M4 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="tl-ansible" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></g></symbol>
+<symbol id="tl-xunit" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 18l-5-9V3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.5 15h9" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="tl-fassert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m8 12.5 2.5 2.5L16 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="tl-nsub" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l3 3-3 3"/><path d="M20 7H7a4 4 0 0 0-4 4"/><path d="M7 20l-3-3 3-3"/><path d="M4 17h13a4 4 0 0 0 4-4"/></g></symbol>
+<symbol id="tl-waf" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V10l6 4v7H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 17h2M12 17h2M17 17h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+</svg>
+<!-- ═══════════ TOPBAR ═══════════ -->
+<nav class="topbar">
+<div class="wrap topbar-in">
+<span class="brand">
+<span class="avatar sq"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fb">AH</span></span>
+<span class="fa">علیرضا حایری</span><span class="en">Alireza Haeri</span>
+</span>
+<div class="topbar-nav">
+<a href="#stack"><span class="fa">مسیر مهارت‌ها</span><span class="en">Skill Road</span></a>
+<a href="#projects"><span class="fa">پروژه‌ها</span><span class="en">Projects</span></a>
+<a href="#notes"><span class="fa">یادداشت‌ها</span><span class="en">Notes</span></a>
+<a href="#contact"><span class="fa">تماس</span><span class="en">Contact</span></a>
+</div>
+<a class="btn sm" href="https://github.com/alireza-haeri" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>
+<span class="fa">گیت‌هاب</span><span class="en">GitHub</span>
+</a>
+<button class="btn iconb" id="themeBtn" title="Theme">
+<svg viewBox="0 0 24 24" class="ic sun"><use href="#i-sun"/></svg>
+<svg viewBox="0 0 24 24" class="ic moon"><use href="#i-moon"/></svg>
+</button>
+<button class="btn iconb" id="langBtn" title="English / فارسی">
+<span class="fa" style="font-size:12px;font-weight:700">EN</span>
+<span class="en" style="font-size:12px;font-weight:700">فا</span>
+</button>
+</div>
+</nav>
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="top">
+<div class="shape" style="top:14%;left:6%;width:44px;animation-delay:0s"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5" opacity=".5"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+<div class="shape" style="top:22%;right:8%;width:38px;animation-delay:1.5s"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amb)" stroke-width="1.5" opacity=".5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+<div class="shape" style="bottom:24%;left:9%;width:40px;animation-delay:3s"><svg viewBox="0 0 24 24" fill="none" stroke="var(--vio)" stroke-width="1.5" opacity=".5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+<div class="shape" style="bottom:18%;right:6%;width:42px;animation-delay:2.2s"><svg viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.5" opacity=".5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+<div class="wrap">
+<div class="hero-inner">
+<span class="avatar hero-photo"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fb" style="font-size:26px">AH</span></span>
+<div class="hero-role-pill"><span class="dot"></span>BACK-END DEVELOPER · .NET · BLAZOR · LOGICAL ARCHITECTURE</div>
+<h1>
+<span class="fa">علیرضا <span class="uword">حایری<svg class="uscribble" viewBox="0 0 120 10" preserveAspectRatio="none"><path d="M2 7 Q 20 2 40 6 T 80 6 T 118 4" fill="none" stroke="var(--amb)" stroke-width="3" stroke-linecap="round"/></svg></span></span>
+<span class="en">Alireza <span class="uword">Haeri<svg class="uscribble" viewBox="0 0 120 10" preserveAspectRatio="none"><path d="M2 7 Q 20 2 40 6 T 80 6 T 118 4" fill="none" stroke="var(--amb)" stroke-width="3" stroke-linecap="round"/></svg></span></span>
+</h1>
+<p class="hero-sub">
+<span class="fa">توسعه‌دهندهٔ بک‌اند؛ با <b>.NET</b> سیستم‌های <b>ماژولار، قابل‌نگهداری و production-minded</b> می‌سازم. از تبدیل‌کردن نیازمندی‌های پیچیدهٔ کسب‌وکار به نرم‌افزارِ <b>تمیز، تست‌پذیر و خوش‌ساخت</b> لذت می‌برم.</span>
+<span class="en">Back-end developer building <b>modular, maintainable, and production-minded</b> systems with .NET. I enjoy turning complex business requirements into <b>clean, testable, and well-structured</b> software solutions.</span>
+</p>
+<div class="qwin">
+<div class="qwin-bar"><i></i><i></i><i></i><span>terminal — alireza-haeri</span></div>
+<div class="term" id="term"></div>
+</div>
+<div class="hero-chips">
+<span><b>.NET</b><span class="fa">بک‌اند</span><span class="en">Backend</span></span>
+<span><b>Blazor</b><span class="fa">فول‌استک دات‌نتی</span><span class="en">Full-stack .NET</span></span>
+<span><b>Clean</b><span class="fa">معماری منطقی</span><span class="en">Logical architecture</span></span>
+<span><b>Tested</b><span class="fa">تست‌محور</span><span class="en">Test-minded</span></span>
+</div>
+<div class="hero-actions">
+<a class="btn primary" href="#projects">
+<span class="fa">مشاهدهٔ پروژه‌ها</span><span class="en">Browse Projects</span>
+<svg viewBox="0 0 24 24" class="ic sm"><use href="#i-down"/></svg>
+</a>
+<a class="btn" href="#stack">
+<span class="fa">مسیر مهارت‌ها</span><span class="en">Skill Road</span>
+<svg viewBox="0 0 24 24" class="ic sm"><use href="#i-bulb"/></svg>
+</a>
+</div>
+<div class="scroll-hint"><svg viewBox="0 0 24 24" class="ic"><use href="#i-down"/></svg></div>
+</div>
+</div>
+</header>
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats" style="padding:0">
+<div class="wrap">
+<div class="stats-grid">
+<div class="stat rv"><svg class="ic"><use href="#i-zap"/></svg><div class="num" data-count="3">0</div><div class="lbl"><span class="fa">پروژهٔ شاخص</span><span class="en">Featured Projects</span></div></div>
+<div class="stat rv"><svg class="ic"><use href="#i-book"/></svg><div class="num" data-count="3">0</div><div class="lbl"><span class="fa">سری آموزشی رایگان</span><span class="en">Free Learning Series</span></div></div>
+<div class="stat rv"><svg class="ic"><use href="#i-grid"/></svg><div class="num" data-count="24">0</div><div class="lbl"><span class="fa">الگوی طراحی مستندشده</span><span class="en">Design Patterns Documented</span></div></div>
+<div class="stat rv"><svg class="ic"><use href="#i-star"/></svg><div class="num" data-count="63" data-suffix="+">0</div><div class="lbl"><span class="fa">ستارهٔ گیت‌هاب</span><span class="en">GitHub Stars</span></div></div>
+</div>
+</div>
+</section>
+<main class="wrap">
+<!-- ═══════════ 01 — SKILL ROAD ═══════════ -->
+<section id="stack" class="stack">
+<div class="section-head rv">
+<span class="section-num">01</span>
+<h2><span class="fa">مسیر مهارت‌ها — یک جادهٔ پیوسته با شش ایستگاه</span><span class="en">The Skill Road — one continuous route, six stations</span></h2>
+</div>
+<p class="lead rv">
+<span class="fa">با هر اسکرول، مسیر جلوی پای شما کشیده می‌شود و <b>رنگش کنارِ هر ایستگاه، هم‌رنگِ همان ایستگاه می‌شود</b>. ایستگاه‌ها فقط وقتی به آن‌ها می‌رسید ظاهر می‌شوند — و وقتی ساخته شوند، دیگر سرِ جای خود می‌مانند. روی هر فناوری کلیک کنید تا به زبان ساده بگویم دقیقاً چیست.</span>
+<span class="en">As you scroll, the route draws itself ahead of you and <b>its color shifts to match each station it passes</b>. Stations only appear when you arrive at them — and once built, they stay put. Click any technology for a plain-language explanation.</span>
+</p>
+<div class="road-card rv">
+<div class="road" id="road">
+<svg class="road-svg" id="roadSvg" aria-hidden="true"></svg>
+<svg id="branchSvg" aria-hidden="true"></svg>
+<div class="hub">
+<div class="hub-node" id="hubNode">
+<div class="hub-ava"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none'"></div>
+<div class="hub-lbl"><span class="fa">شروع مسیر</span><span class="en">The Start</span><span class="mono">.NET BACK-END</span></div>
+</div>
+</div>
+<div id="stations"></div>
+<div class="end" id="endNode">
+<div class="end-node">
+<span class="flag"><svg viewBox="0 0 24 24" class="ic"><use href="#i-flag"/></svg></span>
+<div class="end-lbl"><span class="fa">ادامه دارد…</span><span class="en">TO BE CONTINUED…</span></div>
+</div>
+</div>
+</div>
+<div class="map-hint">
+<svg viewBox="0 0 24 24" class="ic"><use href="#i-bulb"/></svg>
+<span class="fa"><b>اسکرول کنید</b> تا مسیر ساخته شود و ایستگاه‌ها یکی‌یکی ظاهر شوند · روی هر فناوری کلیک کنید تا «این چیه؟» را ببینید</span>
+<span class="en"><b>Scroll</b> to build the route and reveal stations one by one · click any technology to see “what is this?”</span>
+</div>
+</div>
+</section>
+<!-- ═══════════ 02 — PROJECTS ═══════════ -->
+<section id="projects" class="projects">
+<div class="section-head rv"><span class="section-num">02</span>
+<h2><span class="fa">پروژه‌ها — هرکدام با دموِ زندهٔ ایدهٔ مرکزی‌اش</span><span class="en">Projects — each with a live demo of its core idea</span></h2>
+</div>
+<p class="lead rv">
+<span class="fa">پروژه‌هایی که ساخته‌ام، تست کرده‌ام و منتشر کرده‌ام. کنار هر پروژه یک <b>انیمیشن کوچک</b> هست که نشان می‌دهد آن پروژه واقعاً چه می‌کند — کمی مکث کنید و تماشا کنید.</span>
+<span class="en">Projects I've built, tested, and shipped. Next to each one, a small <b>animation</b> shows what it actually does — pause for a moment and watch.</span>
+</p>
+<div class="proj-list">
+<!-- ★ PRJ-01 SamarPlanner -->
+<div class="feat-card rv" style="--tc:var(--grn)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">PRJ-01</span>
+<h3>SamarPlanner</h3>
+<span class="pstatus live"><span class="pdot"></span><span class="fa">در تولید</span><span class="en">Live</span></span>
+</div>
+<p class="feat-desc">
+<span class="fa">اپلیکیشن <b>بهره‌وری شخصی</b> در اکوسیستم .NET — مدیریت کارهای روزانه، هدف‌ها، یادداشت‌ها و گزارش‌های دوره‌ای، همه در یک‌جا. یک <b>مونولیتِ ماژولار</b> با طراحی DDD-inspired، کلاینت‌های Blazor و MAUI، و تست در سه سطح. پروژه‌ای یادگیری‌محور، اما با معماریِ production-minded.</span>
+<span class="en">A <b>personal productivity app</b> in the .NET ecosystem — daily tasks, goals, notes, and periodic reports, all in one place. A <b>modular monolith</b> with DDD-inspired design, Blazor &amp; MAUI clients, and three levels of testing. Learning-focused, but production-minded.</span>
+</p>
+<div class="ftags"><span>Modular Monolith</span><span>DDD-inspired</span><span>JWT</span><span>Blazor · MAUI</span><span>xUnit</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://app.samarpln.ir" target="_blank" rel="noopener"><span class="fa">وب‌اپ</span><span class="en">Web App</span></a>
+<a class="btn sm" href="https://api.samarpln.ir/scalar" target="_blank" rel="noopener"><span class="fa">مستندات API</span><span class="en">API Docs</span></a>
+<a class="btn sm" href="https://samarpln.ir" target="_blank" rel="noopener"><span class="fa">لندینگ</span><span class="en">Landing</span></a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>samarplanner — 5 modules, one platform</span></div>
+<div class="st-cap" id="modCap"><span class="fa"></span><span class="en"></span></div>
+<div class="mod-stage" id="modStage">
+<div class="mod-area">
+<div class="mod-box m1" data-name="Identity"><div class="mod-cells"></div><div class="mod-label">IDENTITY</div></div>
+<div class="mod-box m2" data-name="Task"><div class="mod-cells"></div><div class="mod-label">TASK</div></div>
+<div class="mod-box m3" data-name="Goal"><div class="mod-cells"></div><div class="mod-label">GOAL</div></div>
+<div class="mod-box m4" data-name="Note"><div class="mod-cells"></div><div class="mod-label">NOTE</div></div>
+<div class="mod-box m5" data-name="Report"><div class="mod-cells"></div><div class="mod-label">REPORT</div></div>
+</div>
+</div>
+<div class="mini-banner" id="modBanner">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+<span class="fa">هر ماژول چهار لایه دارد: Core · Application · Infrastructure · API</span>
+<span class="en">every module has 4 layers: Core · Application · Infrastructure · API</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ★ PRJ-02 Searchify -->
+<div class="feat-card rv" style="--tc:var(--blue)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">PRJ-02</span>
+<h3>Searchify</h3>
+<span class="pstatus oss"><span class="fa">متن‌باز</span><span class="en">Open Source</span></span>
+</div>
+<p class="feat-desc">
+<span class="fa">یک <b>API جستجوی کتاب</b> با .NET 9 و Elasticsearch 9 — جستجوی تمام‌متنی روی عنوان، نویسنده، توضیحات، دسته‌ها و ناشر؛ <b>پیشنهادهای هوشمند</b> هنگام تایپ، فیلتر و مرتب‌سازی پیشرفته، و endpointهای تحلیلی مثل top books. همه‌چیز با docker-compose بالا می‌آید.</span>
+<span class="en">A <b>Book Search API</b> on .NET 9 and Elasticsearch 9 — full-text search across title, author, description, categories, and publisher; smart <b>type-ahead suggestions</b>, advanced filtering &amp; sorting, and analytics endpoints like top books. Everything boots with docker-compose.</span>
+</p>
+<div class="ftags"><span>.NET 9</span><span>Elasticsearch 9</span><span>Docker</span><span>Minimal APIs</span><span>FluentValidation</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://github.com/alireza-haeri/Searchify" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg><span class="fa">ریپازیتوری</span><span class="en">Repository</span></a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>searchify — multi-field search</span></div>
+<div class="st-cap" id="sfCap"><span class="fa"></span><span class="en"></span></div>
+<div class="sf-body">
+<div class="sf-q"><span class="method">GET</span> /api/books/search?q=<span class="typed" id="sfTyped"></span><span class="cursor" id="sfCur"></span></div>
+<div class="sf-fields" id="sfFields">
+<span>title</span><span>author</span><span>description</span><span>categories</span><span>publisher</span>
+</div>
+<div id="sfRows">
+<div class="sf-row" data-m="1" data-w="Elastic"><svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Elasticsearch in Action</span></div>
+<div class="sf-row" data-m="1" data-w="Elastic"><svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Learning Elasticsearch</span></div>
+<div class="sf-row" data-m="0"><svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Clean Code — R. C. Martin</span></div>
+<div class="sf-row" data-m="0"><svg class="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Domain-Driven Design</span></div>
+</div>
+<div class="sf-stats" id="sfStats"><span class="fa">۲ نتیجه از ۴ · مرتب بر اساس rating · ۱۸ms</span><span class="en">2 of 4 matched · sorted by rating · 18ms</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ★ PRJ-03 IdentityProvider -->
+<div class="feat-card rv" style="--tc:var(--vio)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">PRJ-03</span>
+<h3>IdentityProvider</h3>
+<span class="pstatus lab"><span class="fa">آموزشی</span><span class="en">Educational</span></span>
+</div>
+<p class="feat-desc">
+<span class="fa">یک مسیر آموزشی برای یادگیری عمیق <b>احراز هویت و مجوزها</b> در اکوسیستم .NET — نه یک اپلیکیشن، بلکه مجموعه‌ای از پروژه‌های کوچک و مستقل که هرکدام یک سناریوی مشخص را نشان می‌دهد: از Claims پایه تا JWT متقارن/نامتقارن، Policy-Based Authorization و OAuth 2.0. یک <b>learning playground</b>، نه راه‌حل production.</span>
+<span class="en">An educational journey into <b>Authentication &amp; Authorization</b> in the .NET ecosystem — not one application, but a collection of small, independent projects, each demonstrating a specific scenario: from basic Claims to symmetric/asymmetric JWT, Policy-Based Authorization, and OAuth 2.0. A <b>learning playground</b>, not a production solution.</span>
+</p>
+<div class="ftags"><span>Claims</span><span>JWT</span><span>Policies</span><span>OAuth 2.0</span><span>ASP.NET Identity</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://github.com/alireza-haeri/IdentityProvider" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg><span class="fa">ریپازیتوری</span><span class="en">Repository</span></a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>identityprovider — a learning journey</span></div>
+<div class="st-cap" id="ipCap"><span class="fa"></span><span class="en"></span></div>
+<div class="ip-grid" id="ipGrid">
+<div class="ip-box" style="--bc:#5CC08F"><div class="ip-name">Basic</div><div class="ip-sub">claims &amp; identity</div></div>
+<div class="ip-box" style="--bc:#E3A63C"><div class="ip-name">AuthN</div><div class="ip-sub">custom handler</div></div>
+<div class="ip-box" style="--bc:#6BA8D4"><div class="ip-name">Identity</div><div class="ip-sub">users &amp; roles</div></div>
+<div class="ip-box" style="--bc:#D08B4F"><div class="ip-name">JWT</div><div class="ip-sub">sym / asym keys</div></div>
+<div class="ip-box" style="--bc:#E5745A"><div class="ip-name">AuthZ</div><div class="ip-sub">policies</div></div>
+<div class="ip-box" style="--bc:#66C2B5"><div class="ip-name">OAuth</div><div class="ip-sub">the 2.0 flow</div></div>
+</div>
+<div class="mini-banner" id="ipBanner">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+<span class="fa">هر پوشه یک مفهوم مستقل — clone کن، dotnet run، یاد بگیر</span>
+<span class="en">each folder is one concept — clone, dotnet run, learn</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══════════ 03 — OPEN BOOKSHELF ═══════════ -->
+<section id="notes" class="notes">
+<div class="section-head rv"><span class="section-num">03</span>
+<h2><span class="fa">قفسهٔ کتاب‌های باز — آموزش رایگان به زبان مادری</span><span class="en">The Open Bookshelf — free learning in your mother tongue</span></h2>
+</div>
+<p class="lead rv">
+<span class="fa">باور دارم یادگیری باید <b>رایگان</b> و <b>به زبان مادری</b> باشد. این‌ها کتاب‌ها و دوره‌های متن‌بازی هستند که برای جامعهٔ فارسی‌زبان می‌نویسم — هرکدام با یک <b>دموی زنده</b> از ایدهٔ مرکزی‌اش. جلدها را باز کنید.</span>
+<span class="en">I believe learning should be <b>free</b> and <b>in your mother tongue</b>. These are the open-source books and courses I write for the Persian-speaking community — each with a <b>live demo</b> of its core idea. Open the covers.</span>
+</p>
+<div class="shelf-stats rv">
+<span><svg class="ic sm"><use href="#i-heart"/></svg><span class="fa"><b>رایگان</b> برای همه</span><span class="en"><b>Free</b> for everyone</span></span>
+<span><svg class="ic sm"><use href="#i-book"/></svg><span class="fa"><b>۱۰۰٪</b> به زبان فارسی</span><span class="en"><b>100%</b> in Persian</span></span>
+</div>
+<div class="fa-quote rv">
+<svg viewBox="0 0 24 24" class="ic"><use href="#i-heart"/></svg>
+<span class="fa" lang="fa" dir="rtl">«آموزش آزاد، به زبان مادری»</span>
+<span class="en">"Free learning, in your mother tongue"</span>
+</div>
+<div class="shelf">
+<div class="shelf-spine"><div class="prog-line" id="roadProg"></div></div>
+<div class="shelf-items">
+
+<!-- ★ VOL-01 BackendDeepDives — microscope descent -->
+<div class="note-card rv" style="--nc:var(--grn)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">VOL-01</span>
+<h3>BackendDeepDives</h3>
+<span class="pstatus pub"><span class="pdot"></span><span class="fa">در حال گسترش</span><span class="en">Growing</span></span>
+</div>
+<p class="feat-desc">
+<span class="fa">بک‌اند زیر میکروسکوپ: فهمیدنِ اینکه <b>چرا</b> چیزها کار می‌کنند، نه فقط چطور. هر فصل یک موضوع را از <b>سطح</b> به <b>هسته</b> می‌برد — با تصویر، نه با متن. پروژه‌ای زنده که همراه شما رشد می‌کند.</span>
+<span class="en">Backend under the microscope: understanding <b>why</b> things work, not just how. Each chapter takes a topic from <b>surface</b> to <b>core</b> — shown visually, not with text. A living project that grows with you.</span>
+</p>
+<div class="nstats"><span>SQL Server</span><span>.NET internals</span><span>Growing chapters</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://alireza-haeri.github.io/BackendDeepDives/" target="_blank" rel="noopener"><span class="fa">خواندن</span><span class="en">Read</span></a>
+<a class="btn sm" href="https://github.com/alireza-haeri/BackendDeepDives" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>GitHub</a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>backenddeepdives — the microscope descent</span></div>
+<div class="st-cap" id="bdCap"><span class="fa"></span><span class="en"></span></div>
+<div class="bd-stage">
+<div class="bd-gauge" id="bdGauge">
+<div class="bd-gauge-fill" id="bdFill"></div>
+<div class="bd-tick"></div><div class="bd-tick"></div><div class="bd-tick"></div><div class="bd-tick"></div><div class="bd-tick"></div>
+</div>
+<div class="bd-viewport" id="bdView">
+<div class="bd-scene">
+<svg viewBox="0 0 320 230">
+<rect class="fade" style="--d:.0s" x="100" y="48" width="150" height="15" rx="4" fill="#2E372F"/>
+<rect class="fade" style="--d:.1s" x="100" y="74" width="150" height="15" rx="4" fill="#2E372F"/>
+<rect class="fade" style="--d:.2s" x="100" y="100" width="150" height="15" rx="4" fill="#2E372F"/>
+<rect class="fade" style="--d:.3s" x="100" y="126" width="150" height="15" rx="4" fill="#2E372F"/>
+<rect class="fade" style="--d:.4s" x="100" y="152" width="150" height="15" rx="4" fill="#2E372F"/>
+<g class="s1-packet"><circle cx="14" cy="107" r="9" fill="#E3A63C"/><circle cx="14" cy="107" r="15" fill="none" stroke="#E3A63C" stroke-width="1.5" opacity=".4"/></g>
+<g class="s1-lenspop"><g class="s1-lenspulse">
+<circle cx="175" cy="107" r="34" fill="none" stroke="#7CB1F2" stroke-width="3"/>
+<line x1="199" y1="131" x2="222" y2="154" stroke="#7CB1F2" stroke-width="5" stroke-linecap="round"/>
+</g></g>
+</svg>
+</div>
+<div class="bd-scene">
+<svg viewBox="0 0 320 230">
+<line class="draw" pathLength="1" style="--d:.2s" x1="52" y1="115" x2="86" y2="115" stroke="#39423B" stroke-width="3"/>
+<line class="draw" pathLength="1" style="--d:.5s" x1="130" y1="115" x2="146" y2="115" stroke="#39423B" stroke-width="3"/>
+<line class="draw" pathLength="1" style="--d:.8s" x1="190" y1="115" x2="206" y2="115" stroke="#39423B" stroke-width="3"/>
+<line class="draw" pathLength="1" style="--d:1.1s" x1="250" y1="115" x2="270" y2="115" stroke="#39423B" stroke-width="3"/>
+<circle class="pop" style="--d:.0s;--lit:#7CB1F2" cx="40" cy="115" r="11" fill="#7CB1F2"/>
+<rect class="pop blit" style="--d:.3s" x="86" y="93" width="44" height="44" rx="9" fill="#232B24" stroke="#39423B" stroke-width="2"/>
+<rect class="pop blit" style="--d:.6s" x="146" y="93" width="44" height="44" rx="9" fill="#232B24" stroke="#39423B" stroke-width="2"/>
+<rect class="pop blit" style="--d:.9s" x="206" y="93" width="44" height="44" rx="9" fill="#232B24" stroke="#39423B" stroke-width="2"/>
+<circle class="pop" style="--d:1.2s;--lit:#5CC08F" cx="282" cy="115" r="11" fill="#5CC08F"/>
+<g class="s2-dot"><circle cx="40" cy="115" r="6" fill="#E3A63C"/><circle cx="40" cy="115" r="11" fill="none" stroke="#E3A63C" stroke-width="1.5" opacity=".4"/></g>
+</svg>
+</div>
+<div class="bd-scene">
+<svg viewBox="0 0 320 230">
+<rect class="rise" style="--d:.0s" x="100" y="40" width="120" height="20" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+<rect class="rise" style="--d:.1s" x="100" y="68" width="120" height="20" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+<rect class="rise pg-target" style="--d:.2s" x="100" y="96" width="120" height="20" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+<rect class="rise" style="--d:.3s" x="100" y="124" width="120" height="20" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+<rect class="rise" style="--d:.4s" x="100" y="152" width="120" height="20" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+<rect class="s3-scan" x="96" y="36" width="128" height="4" rx="2" fill="#6BA8D4"/>
+<g class="s3-spark"><circle cx="160" cy="106" r="6" fill="#E3A63C"/><circle cx="160" cy="106" r="11" fill="none" stroke="#E3A63C" stroke-width="1.5" opacity=".5"/></g>
+</svg>
+</div>
+<div class="bd-scene">
+<svg viewBox="0 0 320 230">
+<path class="draw" pathLength="1" style="--d:.3s" d="M160 38 L100 86" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:.3s" d="M160 38 L220 86" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:.5s" d="M100 86 L70 134" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:.5s" d="M100 86 L130 134" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:.5s" d="M220 86 L190 134" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:.5s" d="M220 86 L250 134" stroke="#39423B" stroke-width="2.5" fill="none"/>
+<path class="draw" pathLength="1" style="--d:1.1s" d="M160 38 L220 86" stroke="#E3A63C" stroke-width="3" fill="none"/>
+<path class="draw" pathLength="1" style="--d:1.5s" d="M220 86 L250 134" stroke="#E3A63C" stroke-width="3" fill="none"/>
+<circle class="path" style="--d:.9s;--lit:#E3A63C" cx="160" cy="38" r="13" fill="#39423B"/>
+<circle class="node pop" style="--d:.4s" cx="100" cy="86" r="10"/>
+<circle class="path" style="--d:1.3s;--lit:#E3A63C" cx="220" cy="86" r="10" fill="#39423B"/>
+<circle class="node pop" style="--d:.6s" cx="70" cy="134" r="8"/>
+<circle class="node pop" style="--d:.6s" cx="130" cy="134" r="8"/>
+<circle class="node pop" style="--d:.6s" cx="190" cy="134" r="8"/>
+<circle class="path" style="--d:1.7s;--lit:#5CC08F" cx="250" cy="134" r="8" fill="#39423B"/>
+<path class="draw" pathLength="1" style="--d:1.9s" d="M250 142 L165 176" stroke="#5CC08F" stroke-width="2" fill="none" opacity=".6"/>
+<rect class="s4-found" x="120" y="172" width="80" height="16" rx="4" fill="#232B24" stroke="#39423B" stroke-width="1.5"/>
+</svg>
+</div>
+<div class="bd-scene">
+<svg viewBox="0 0 320 230">
+<g class="s5-rays" stroke="#E5745A" stroke-width="3" stroke-linecap="round" opacity=".6">
+<line x1="160" y1="70" x2="160" y2="52"/><line x1="160" y1="160" x2="160" y2="178"/>
+<line x1="115" y1="115" x2="97" y2="115"/><line x1="205" y1="115" x2="223" y2="115"/>
+<line x1="128" y1="83" x2="115" y2="70"/><line x1="192" y1="83" x2="205" y2="70"/>
+<line x1="128" y1="147" x2="115" y2="160"/><line x1="192" y1="147" x2="205" y2="160"/>
+</g>
+<circle class="ring" style="--d:.2s" cx="160" cy="115" r="30" fill="none" stroke="#E5745A" stroke-width="2"/>
+<circle class="ring" style="--d:1.0s" cx="160" cy="115" r="30" fill="none" stroke="#E3A63C" stroke-width="2"/>
+<circle class="ring" style="--d:1.8s" cx="160" cy="115" r="30" fill="none" stroke="#E5745A" stroke-width="2"/>
+<circle class="core" cx="160" cy="115" r="24" fill="#E5745A"/>
+<circle class="core-in" cx="160" cy="115" r="11" fill="#FDFBF5"/>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ★ VOL-02 Persian-Design-Patterns — SVG icons, English only -->
+<div class="note-card starred rv" style="--nc:var(--amb)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">VOL-02</span>
+<h3>Persian-Design-Patterns</h3>
+<span class="pstatus fav"><span class="pdot"></span><span class="fa">کامل</span><span class="en">Complete</span></span>
+<span class="star-pill">★ 63</span>
+</div>
+<p class="feat-desc">
+<span class="fa">مرجع کامل <b>۲۴ الگوی طراحی نرم‌افزار</b> به فارسی — مرتب در سه سطح <b>مبتدی، متوسط و پیشرفته</b> با مثال‌های کامل C# در .NET.</span>
+<span class="en">The complete reference for all <b>24 software design patterns</b> in Persian — organized in three levels with full C#/.NET examples.</span>
+</p>
+<div class="nstats"><span><b>24</b> patterns</span><span><b>3</b> tiers</span><span>C# · .NET</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://alireza-haeri.github.io/Persian-Design-Patterns" target="_blank" rel="noopener"><span class="fa">خواندن</span><span class="en">Read</span></a>
+<a class="btn sm" href="https://github.com/alireza-haeri/Persian-Design-Patterns" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>GitHub</a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>design-patterns — 24 patterns in 3 tiers</span></div>
+<div class="st-cap" id="dpCap" dir="ltr"></div>
+<div class="dp-stage" id="dpStage">
+<div class="dp-tier" style="--tc:#5CC08F">
+<div class="dp-head">
+<svg class="dp-ticon" viewBox="0 0 24 24"><path d="M12 22v-8"/><path d="M12 14C12 9.5 9 7 4.5 7 4.5 11.5 7.5 14 12 14z"/><path d="M12 14c0-4.5 3-7 7.5-7C19.5 11.5 16.5 14 12 14z"/></svg>
+<span class="dp-label">BEGINNER</span><span class="dp-count">×5</span>
+<span class="dp-check"><svg viewBox="0 0 24 24" class="ic sm"><use href="#i-check"/></svg></span>
+</div>
+<div class="dp-chips">
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M4 18L3 8l5.5 4L12 4l3.5 8L21 8l-1 10H4z"/></svg>Singleton</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M3 21V9l6 4V9l6 4V4h6v17H3z"/></svg>Factory</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="4" y="15" width="7" height="6" rx="1"/><rect x="13" y="15" width="7" height="6" rx="1"/><rect x="8.5" y="7" width="7" height="6" rx="1"/></svg>Builder</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5"/><path d="M6 7h12v4a6 6 0 0 1-6 6 6 6 0 0 1-6-6V7z"/><path d="M12 17v5"/></svg>Adapter</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9M9.5 21V9M14.5 21V9M19 21V9"/><path d="M3 9l9-6 9 6H3z"/></svg>Facade</span>
+</div>
+</div>
+<div class="dp-tier" style="--tc:#6BA8D4">
+<div class="dp-head">
+<svg class="dp-ticon" viewBox="0 0 24 24"><path d="M4 20C4 10.5 10.5 4 20 4c0 9.5-6.5 16-16 16z"/><path d="M4 20c4.5-6.5 8.5-10.5 13-13"/></svg>
+<span class="dp-label">INTERMEDIATE</span><span class="dp-count">×5</span>
+<span class="dp-check"><svg viewBox="0 0 24 24" class="ic sm"><use href="#i-check"/></svg></span>
+</div>
+<div class="dp-chips">
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>Strategy</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>Observer</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="4.5" rx="1"/><rect x="5.5" y="12.5" width="13" height="8.5" rx="1"/><path d="M12 8v13"/><path d="M12 8c-1.5 0-4-.5-4-2.7C8 3.5 10.5 4 12 8zm0 0c1.5 0 4-.5 4-2.7C16 3.5 13.5 4 12 8z"/></svg>Decorator</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9.5l3 2.5-3 2.5"/><path d="M12.5 15H17"/></svg>Command</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11.5h6M9 15.5h6"/></svg>Template</span>
+</div>
+</div>
+<div class="dp-tier" style="--tc:#E3A63C">
+<div class="dp-head">
+<svg class="dp-ticon" viewBox="0 0 24 24"><path d="M12 2.5l5.5 7h-3.5l4.5 6H5.5l4.5-6H6.5l5.5-7z"/><path d="M12 15.5V22"/></svg>
+<span class="dp-label">ADVANCED</span><span class="dp-count">×14</span>
+<span class="dp-check"><svg viewBox="0 0 24 24" class="ic sm"><use href="#i-check"/></svg></span>
+</div>
+<div class="dp-chips">
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="3" y="9" width="11" height="11" rx="2"/><rect x="10" y="4" width="11" height="11" rx="2"/></svg>Abstract</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 4H5a2 2 0 0 0-2 2v11"/></svg>Prototype</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M12 2.5l7.5 3v5.5c0 4.8-3.2 8.3-7.5 10.5-4.3-2.2-7.5-5.7-7.5-10.5V5.5l7.5-3z"/></svg>Proxy</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M2 18h20"/><path d="M4 18v-5a8 8 0 0 1 16 0v5"/><path d="M8 18V6.5M12 18V5M16 18V6.5"/></svg>Bridge</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5.5" cy="19" r="2.5"/><circle cx="18.5" cy="19" r="2.5"/><path d="M12 7.5v4"/><path d="M12 11.5L6.3 16.8"/><path d="M12 11.5l5.7 5.3"/></svg>Composite</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M20.5 3.5c-6.5.5-12 5-14 12.5L4.5 20l4-2c7.5-2 12-7.5 12-14.5z"/><path d="M6 18L17 7"/></svg>Flyweight</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="2.5" y="9" width="10" height="6" rx="3"/><rect x="11.5" y="9" width="10" height="6" rx="3"/></svg>Chain</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20.5 2.5v4.2h-4.2"/></svg>Iterator</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="3.5" r="1.7"/><circle cx="20.5" cy="12" r="1.7"/><circle cx="12" cy="20.5" r="1.7"/><circle cx="3.5" cy="12" r="1.7"/><path d="M12 5.5V9M14.9 12h3.6M12 18.5V15M5.5 12H9"/></svg>Mediator</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7l1.7-2.5h3.6L15.5 7"/><circle cx="12" cy="13" r="3.5"/></svg>Memento</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10" rx="5"/><circle cx="16.5" cy="12" r="3"/></svg>State</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="3.5"/><path d="M4.5 21c0-4.2 3.3-6.5 7.5-6.5s7.5 2.3 7.5 6.5"/></svg>Visitor</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><path d="M4 8.5h13"/><path d="M17 8.5l-3-3M17 8.5l-3 3"/><path d="M20 15.5H7"/><path d="M7 15.5l3-3M7 15.5l3 3"/></svg>CQRS</span>
+<span class="dp-chip"><svg class="dp-ic" viewBox="0 0 24 24"><rect x="3" y="10" width="11" height="10" rx="2"/><path d="M14 15h7"/><path d="M21 15l-3-3M21 15l-3 3"/></svg>Outbox</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ★ VOL-03 Lpic-Persian — terminal classroom -->
+<div class="note-card rv" style="--nc:var(--blue)">
+<div class="feat-top">
+<div class="feat-info">
+<div class="feat-head">
+<span class="pnum">VOL-03</span>
+<h3>Lpic-Persian</h3>
+<span class="pstatus course"><span class="pdot"></span><span class="fa">دورهٔ کامل</span><span class="en">Full course</span></span>
+</div>
+<p class="feat-desc">
+<span class="fa">دورهٔ جامع لینوکس به فارسی — از <b>مقدماتی تا پیشرفته</b> با آموزش گام‌به‌گام و پروژه‌های واقعی.</span>
+<span class="en">Comprehensive Linux course in Persian — <b>beginner to advanced</b> with step-by-step lessons and real projects.</span>
+</p>
+<div class="nstats"><span>Shell &amp; Bash</span><span>Permissions</span><span>Network</span></div>
+<div class="feat-links">
+<a class="btn primary sm" href="https://alireza-haeri.github.io/Lpic-Persian/" target="_blank" rel="noopener"><span class="fa">شروع دوره</span><span class="en">Start course</span></a>
+<a class="btn sm" href="https://github.com/alireza-haeri/Lpic-Persian" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>GitHub</a>
+</div>
+</div>
+<div class="feat-stage" aria-hidden="true">
+<div class="qwin-bar"><i></i><i></i><i></i><span>lpic-persian — the terminal classroom</span></div>
+<div class="st-cap" id="lpCap"><span class="fa"></span><span class="en"></span></div>
+<div class="lp-stage"><div class="lp-term" id="lpTerm"></div></div>
+</div>
+</div>
+</div>
+
+<div class="shelf-plank"></div>
+</div>
+</div>
+</section>
+<!-- ═══════════ 04 — CONTACT ═══════════ -->
+<section id="contact">
+<div class="section-head rv"><span class="section-num">04</span>
+<h2><span class="fa">تماس — بیایید یک سیستم را درست بسازیم</span><span class="en">Contact — let's build it right</span></h2>
+</div>
+<p class="lead rv">
+<span class="fa">اگر یک مسئلهٔ بک‌اندی دارید — چه یک monolith که نیاز به نظم دارد، چه یک API که باید جان‌سخت باشد — خوشحال می‌شوم بشنوم.</span>
+<span class="en">If you have a backend problem — a monolith that needs order, or an API that needs to be resilient — I'd love to hear about it.</span>
+</p>
+<div class="author-big rv-scale">
+<span class="avatar"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fb" style="font-size:22px">AH</span></span>
+<div class="author-info-big">
+<div class="author-name-big"><span class="fa">علیرضا حایری</span><span class="en">Alireza Haeri</span></div>
+<div class="author-role-big">
+<span class="fa">توسعه‌دهندهٔ بک‌اند ‎.NET · همیشه آمادهٔ یک مسئلهٔ خوب</span>
+<span class="en">.NET Backend Developer · always up for a good problem</span>
+</div>
+<div class="author-links-big">
+<a class="btn sm" href="https://github.com/alireza-haeri" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>GitHub</a>
+<a class="btn sm" href="https://linkedin.com/in/alireza-haeri-dev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-linkedin"/></svg>LinkedIn</a>
+<a class="btn sm" href="https://t.me/AlirezaHaeriDev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-telegram"/></svg>Telegram</a>
+</div>
+</div>
+</div>
+<div class="cta-mail rv">
+<a class="btn primary" href="mailto:alireza.haeri.dev@gmail.com">
+<svg viewBox="0 0 24 24" class="ic"><use href="#i-mail"/></svg>
+alireza.haeri.dev@gmail.com
+</a>
+</div>
+</section>
+</main>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div class="foot-profile">
+<span class="avatar"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fb">AH</span></span>
+<div>
+<div class="name"><span class="fa">علیرضا حایری</span><span class="en">Alireza Haeri</span></div>
+<div class="role"><span class="fa">توسعه‌دهندهٔ بک‌اند ‎.NET · ماژولار، تست‌شده، production-minded</span><span class="en">.NET Backend Developer · modular, tested, production-minded</span></div>
+</div>
+</div>
+<div class="foot-links">
+<a class="btn sm" href="https://github.com/alireza-haeri" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg>GitHub</a>
+<a class="btn sm" href="https://linkedin.com/in/alireza-haeri-dev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-linkedin"/></svg>LinkedIn</a>
+<a class="btn sm" href="https://t.me/AlirezaHaeriDev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-telegram"/></svg>Telegram</a>
+<a class="btn sm" href="mailto:alireza.haeri.dev@gmail.com"><svg viewBox="0 0 24 24" class="ic sm"><use href="#i-mail"/></svg>Email</a>
+</div>
+</div>
+<div class="foot-meta">
+<span class="fa">ساخته‌شده با <a href="#top">❤</a> و HTML/CSS/JS خالص · © <span id="year">2025</span> علیرضا حایری · <span class="mono">// exit 0</span></span>
+<span class="en">Built with <a href="#top">❤</a> and plain HTML/CSS/JS · © <span id="year2">2025</span> Alireza Haeri · <span class="mono">// exit 0</span></span>
+</div>
+</div>
+</footer>
+<!-- ═══════════ TECH MODAL ═══════════ -->
+<div class="modal-bg" id="modalBg">
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+<div class="modal-bar">
+<i></i><i></i><i></i>
+<span class="mcat" id="modalCat"></span>
+<button class="modal-x" id="modalClose" aria-label="close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+</div>
+<div class="modal-body">
+<div class="modal-name" id="modalName"></div>
+<div class="modal-lbl"><span class="fa">به زبان ساده — این چیه؟</span><span class="en">In plain words — what is this?</span></div>
+<p id="modalText"></p>
+<div class="modal-foot"><span class="mdot" id="modalDot"></span><span id="modalBranch"></span></div>
+</div>
+</div>
+</div>
+<script>
+/* ═══════════ HELPERS ═══════════ */
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const curLang=()=>document.documentElement.getAttribute('lang')||'fa';
+function setCap(el,fa,en){
+const f=el.querySelector('.fa'),e=el.querySelector('.en');
+if(f)f.textContent=fa; if(e)e.textContent=en;
+el.classList.add('switching');
+requestAnimationFrame(()=>el.classList.remove('switching'));
+}
+/* ═══════════ THEME ═══════════ */
+document.getElementById('themeBtn').addEventListener('click',()=>{
+const h=document.documentElement;
+const n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+h.setAttribute('data-theme',n);
+try{localStorage.setItem('ah-theme',n);}catch(e){}
+});
+(function(){let s=null;try{s=localStorage.getItem('ah-theme');}catch(e){}
+if(s)document.documentElement.setAttribute('data-theme',s);})();
+/* ═══════════ LANGUAGE ═══════════ */
+document.getElementById('langBtn').addEventListener('click',()=>{
+const h=document.documentElement;
+const isFa=h.getAttribute('lang')==='fa';
+h.setAttribute('lang',isFa?'en':'fa');
+h.setAttribute('dir',isFa?'ltr':'rtl');
+try{localStorage.setItem('ah-lang',isFa?'en':'fa');}catch(e){}
+});
+(function(){let s=null;try{s=localStorage.getItem('ah-lang');}catch(e){}
+if(s==='en'){document.documentElement.setAttribute('lang','en');document.documentElement.setAttribute('dir','ltr');}})();
+/* ═══════════ PROGRESS + YEAR ═══════════ */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+const h=document.documentElement;
+prog.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+const yr=new Date().getFullYear();
+document.getElementById('year').textContent=yr;
+document.getElementById('year2').textContent=yr;
+/* ═══════════ HERO TERMINAL ═══════════ */
+const termEl=document.getElementById('term');
+const script=[
+{t:'~/alireza-haeri $ ',c:'pr',type:true},
+{t:'whoami\n',c:'',type:true},
+{t:'alireza haeri — back-end developer (.net / blazor)\n',c:'hl',type:true,delay:14},
+{t:'~/alireza-haeri $ ',c:'pr',type:true},
+{t:'ls principles/\n',c:'',type:true},
+{t:'modular-monolith/    clean-architecture/    cqrs-mediatr/\n',c:'hl',type:true,delay:10},
+{t:'fluent-validation/   tested-always/         production-minded/\n',c:'hl',type:true,delay:10},
+{t:'~/alireza-haeri $ ',c:'pr',type:true},
+{t:'cat mission.txt\n',c:'',type:true},
+{t:'> Turn complex business requirements into clean,\n',c:'cm',type:true,delay:12},
+{t:'> testable, well-structured software.\n',c:'cm',type:true,delay:12},
+{t:'~/alireza-haeri $ ',c:'pr',type:true},
+{t:'./status --now\n',c:'',type:true},
+{t:'checking availability ',c:'',type:true,delay:22},
+{t:'████████████',c:'ok',type:true,delay:32},
+{t:' done\n',c:'',type:true},
+{t:'✓ open to interesting backend problems',c:'ok',type:true}
+];
+const cur=document.createElement('span');cur.className='cursor';
+if(reduced){
+script.forEach(seg=>{const sp=document.createElement('span');sp.className=seg.c;sp.textContent=seg.t;termEl.appendChild(sp);});
+termEl.appendChild(cur);
+}else{
+let si=0,ci=0;
+function typeStep(){
+if(si>=script.length){termEl.appendChild(cur);return;}
+const seg=script[si];
+if(ci===0){const sp=document.createElement('span');sp.className=seg.c;sp.id='seg'+si;termEl.appendChild(sp);}
+const sp=document.getElementById('seg'+si);
+if(ci<seg.t.length){sp.textContent+=seg.t[ci];ci++;termEl.appendChild(cur);setTimeout(typeStep,seg.type?(seg.delay||28):8);}
+else{si++;ci=0;setTimeout(typeStep,seg.type?120:60);}
+}
+setTimeout(typeStep,900);
+}
+/* ═══════════ TECH LOGO MAP ═══════════ */
+const LOGO={
+'C#':{id:'tl-csharp',c:'#7B2D8B'},
+'.NET':{id:'tl-dotnet',c:'#6C2BD9'},
+'ASP.NET Core':{id:'tl-aspnet',c:'#6C2BD9'},
+'EF Core':{id:'tl-efcore',c:'#6C2BD9'},
+'SQL Server':{id:'tl-sql',c:'#D64541'},
+'Clean Architecture':{id:'tl-cleanarch',c:'var(--sc)'},
+'Modular Monolith':{id:'tl-modular',c:'var(--sc)'},
+'DDD-inspired':{id:'tl-ddd',c:'var(--sc)'},
+'CQRS':{id:'tl-cqrs',c:'var(--sc)'},
+'MediatR':{id:'tl-mediatr',c:'var(--sc)'},
+'FluentValidation':{id:'tl-fvalid',c:'#15803D'},
+'ASP.NET Identity':{id:'tl-identity',c:'#C0392B'},
+'JWT':{id:'tl-jwt',c:'#B45309'},
+'Keycloak':{id:'tl-keycloak',c:'#B91C1C'},
+'Docker':{id:'tl-docker',c:'#2496ED'},
+'Traefik':{id:'tl-traefik',c:'#2D6A9F'},
+'Git':{id:'tl-git',c:'#F05032'},
+'GitHub':{id:'tl-github',c:'var(--ink)'},
+'Redis':{id:'tl-redis',c:'#DC382D'},
+'Elasticsearch':{id:'tl-elastic',c:'#0E7C86'},
+'MongoDB':{id:'tl-mongodb',c:'#3FA037'},
+'Linux':{id:'tl-linux',c:'#C99700'},
+'Bash':{id:'tl-bash',c:'#16A34A'},
+'Ansible':{id:'tl-ansible',c:'#D40000'},
+'xUnit':{id:'tl-xunit',c:'#15803D'},
+'FluentAssertions':{id:'tl-fassert',c:'#15803D'},
+'NSubstitute':{id:'tl-nsub',c:'#B45309'},
+'WebApplicationFactory':{id:'tl-waf',c:'#4A6FA5'}
+};
+function logoSvg(name,cls){
+const lg=LOGO[name]||{id:'tl-generic',c:'var(--sc)'};
+return '<svg class="'+(cls||'tlogo')+'" style="color:'+lg.c+'"><use href="#'+lg.id+'"/></svg>';
+}
+/* ═══════════ SKILL ROAD — DATA ═══════════ */
+const CATS=[
+{id:'backend',fa:'بک‌اند',en:'Back-end',col:'var(--grn)',
+desc:{fa:'زبان و ابزارهایی که با آن‌ها منطق، API و سرویس می‌سازم.',en:'The language and tools I build logic, APIs, and services with.'},
+techs:[
+{n:'C#',fa:'زبان برنامه‌نویسی اصلی اکوسیستم مایکروسافت — زبانی که با آن منطق می‌نویسم.',en:'The main programming language of the Microsoft ecosystem — what I write logic with.'},
+{n:'.NET',fa:'پلتفرم اجرایی مایکروسافت — کتابخانه‌ها و ابزارهایی که C# روی آن‌ها اجرا می‌شود.',en:"Microsoft's runtime platform — the libraries and tools that C# runs on."},
+{n:'ASP.NET Core',fa:'فریم‌ورک ساخت وب‌سرویس و API — دروازهٔ ورود درخواست‌ها به سیستم.',en:'The framework for building web services and APIs — the gateway requests enter through.'},
+{n:'EF Core',fa:'پل بین کد و دیتابیس — به‌جای نوشتن SQL دستی، با اُبجکت‌ها کار می‌کنید.',en:'The bridge between code and database — work with objects instead of hand-writing SQL.'},
+{n:'SQL Server',fa:'دیتابیس رابطه‌ای مایکروسافت — جایی که داده‌ها ذخیره و پرس‌وجو می‌شوند.',en:"Microsoft's relational database — where data is stored and queried."}]},
+{id:'arch',fa:'معماری و الگوها',en:'Architecture & Patterns',col:'var(--vio)',
+desc:{fa:'قوانین چیدمان کد — مرزها و جریان فرمان، طوری که تغییر ارزان بماند.',en:'Rules for arranging code — boundaries and command flow, so change stays cheap.'},
+techs:[
+{n:'Clean Architecture',fa:'سبک چیدن لایه‌ها: منطق کسب‌وکار در مرکز، وابستگی‌ها رو به بیرون.',en:'A layering style: business logic at the center, dependencies pointing outward.'},
+{n:'Modular Monolith',fa:'یک اپلیکیشن واحد، اما با ماژول‌های مستقل که مرزهایشان مشخص است.',en:'One application, but with independent modules whose boundaries are clear.'},
+{n:'DDD-inspired',fa:'مدل‌سازی نرم‌افزار بر اساس زبان و قوانین خودِ کسب‌وکار.',en:'Modeling software using the language and rules of the business itself.'},
+{n:'CQRS',fa:'جداکردن مسیر خواندن از مسیر نوشتن داده — هرکدام بهینه برای خودش.',en:'Separating the read path from the write path — each optimized for itself.'},
+{n:'MediatR',fa:'فرستادن درخواست‌ها به هندلرِ درست، بدون وصل‌کردن مستقیم اجزا به هم.',en:'Routing requests to the right handler without wiring components directly together.'},
+{n:'FluentValidation',fa:'نوشتن قوانین اعتبارسنجی به شکل خوانا و جدا از منطق اصلی.',en:'Writing validation rules in a readable way, separate from the main logic.'}]},
+{id:'auth',fa:'امنیت و احراز هویت',en:'Auth & Security',col:'var(--red)',
+desc:{fa:'هویت و دسترسی — چه کسی وارد شود و چه کاری بتواند انجام دهد.',en:'Identity and access — who gets in and what they are allowed to do.'},
+techs:[
+{n:'ASP.NET Identity',fa:'سیستم آمادهٔ مدیریت کاربر، رمز عبور و نقش‌ها در دات‌نت.',en:'The ready-made system for managing users, passwords, and roles in .NET.'},
+{n:'JWT',fa:'توکن امضاشده‌ای که هویت کاربر را همراه هر درخواست حمل می‌کند.',en:"A signed token that carries the user's identity along with each request."},
+{n:'Keycloak',fa:'سرور مستقل احراز هویت — ورود یکپارچه برای چند سیستم با یک بار لاگین.',en:'A standalone identity server — single sign-on across multiple systems.'}]},
+{id:'infra',fa:'زیرساخت و ابزارها',en:'Infrastructure & Tools',col:'var(--blue)',
+desc:{fa:'چیزهایی که برنامه را زنده، سریع و در دسترس نگه می‌دارند.',en:'The things that keep the app alive, fast, and available.'},
+techs:[
+{n:'Docker',fa:'بسته‌بندی برنامه با تمام وابستگی‌هایش — روی هر دستگاهی یکسان اجرا می‌شود.',en:'Packaging the app with all its dependencies — runs the same on any machine.'},
+{n:'Traefik',fa:'پروکسی معکوس که ترافیک را به کانتینر درست می‌رساند و SSL را مدیریت می‌کند.',en:'A reverse proxy that routes traffic to the right container and manages SSL.'},
+{n:'Git',fa:'سیستم کنترل نسخه — تاریخچهٔ هر تغییر در کد، قابل بازگشت.',en:'Version control — the history of every change in the code, reversible.'},
+{n:'GitHub',fa:'خانهٔ ریپازیتوریها، code review و اتوماسیونِ ساخت.',en:'Home for repositories, code review, and build automation.'},
+{n:'Redis',fa:'ذخیره‌سازی فوق‌سریع در حافظه — برای کش، قفل و صف.',en:'Ultra-fast in-memory storage — for caching, locking, and queues.'},
+{n:'Elasticsearch',fa:'موتور جستجوی قدرتمند — همان چیزی که پشت جستجوی تمام‌متنی است.',en:'A powerful search engine — what powers full-text search.'},
+{n:'MongoDB',fa:'دیتابیس سندمحور — داده‌های منعطف بدون اسکیمای ثابت.',en:'A document-based database — flexible data without a fixed schema.'}]},
+{id:'devops',fa:'دواپس و سیستم',en:'DevOps & System',col:'var(--amb)',
+desc:{fa:'مدیریت سرورها، اسکریپت‌نویسی و خودکارسازی — نزدیک به فلز.',en:'Managing servers, scripting, and automation — close to the metal.'},
+techs:[
+{n:'Linux',fa:'سیستم‌عامل اکثر سرورهای دنیا — خانهٔ طبیعی هر بک‌اند.',en:"The operating system of most servers in the world — every backend's natural home."},
+{n:'Bash',fa:'زبان اسکریپت‌نویسی خط فرمان لینوکس — چسبِ کارهای روزمره.',en:'The Linux command-line scripting language — the glue of daily tasks.'},
+{n:'Ansible',fa:'ابزار خودکارسازی تنظیم و پروویژن سرورها — با فایل‌های قابل‌خواندن.',en:'A tool for automating server setup and provisioning — with readable files.'}]},
+{id:'test',fa:'تست',en:'Testing',col:'var(--teal)',
+desc:{fa:'توری که نمی‌گذارد یک تغییر، جای دیگری را بشکند.',en:'The net that stops one change from breaking something else.'},
+techs:[
+{n:'xUnit',fa:'فریم‌ورک نوشتن و اجرای تست در دات‌نت — قلب چرخهٔ تست.',en:'The framework for writing and running tests in .NET — the heart of the loop.'},
+{n:'FluentAssertions',fa:'چک‌کردن نتیجهٔ تست با جمله‌های خوانا: should().Be(...)',en:'Checking test results with readable sentences: should().Be(...)'},
+{n:'NSubstitute',fa:'ساخت نسخهٔ جعلی وابستگی‌ها برای تستِ ایزوله و سریع.',en:'Creating fake versions of dependencies for isolated, fast tests.'},
+{n:'WebApplicationFactory',fa:'بالاآوردن کل API در حافظه برای تست‌های یکپارچهٔ واقعی.',en:'Booting the whole API in memory for real integration tests.'}]}
+];
+const SWAY=[0.70,0.30,0.70,0.30,0.70,0.30];
+/* ═══════════ MODAL ═══════════ */
+const modalBg=document.getElementById('modalBg');
+function openModal(cat,tech){
+const lg=curLang();
+document.getElementById('modalCat').textContent=cat[lg];
+document.getElementById('modalCat').style.color=cat.col;
+document.getElementById('modalName').innerHTML=logoSvg(tech.n,'tlogo')+'<span>'+tech.n+'</span>';
+document.getElementById('modalText').textContent=tech[lg];
+document.getElementById('modalDot').style.background=cat.col;
+document.getElementById('modalBranch').innerHTML='<span class="fa">ایستگاه '+cat.fa+' · '+cat.desc.fa+'</span><span class="en">station: '+cat.en+' · '+cat.desc.en+'</span>';
+modalBg.classList.add('show');
+document.body.style.overflow='hidden';
+}
+function closeModal(){
+modalBg.classList.remove('show');
+document.body.style.overflow='';
+}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+modalBg.addEventListener('click',e=>{if(e.target===modalBg)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+/* ═══════════ BUILD STATIONS — chips with per-tech SVG logos ═══════════ */
+const road=document.getElementById('road');
+const stationsWrap=document.getElementById('stations');
+CATS.forEach((c,i)=>{
+const pos=i%2===0?'pos-r':'pos-l';
+const st=document.createElement('div');
+st.className='station '+pos;
+st.dataset.cat=c.id;
+st.style.setProperty('--sc',c.col);
+let chips='';
+c.techs.forEach((t,ti)=>{
+chips+='<button class="s-chip" data-ti="'+ti+'">'+logoSvg(t.n)+t.n+'</button>';
+});
+st.innerHTML=
+'<button class="s-marker" title="'+c.en+'">'+String(i+1).padStart(2,'0')+'</button>'+
+'<div class="s-card">'+
+'<div class="s-head"><span class="s-dot"></span>'+
+'<h3><span class="fa">'+c.fa+'</span><span class="en">'+c.en+'</span></h3>'+
+'<span class="s-count">×'+c.techs.length+'</span></div>'+
+'<div class="s-desc"><span class="fa">'+c.desc.fa+'</span><span class="en">'+c.desc.en+'</span></div>'+
+'<div class="s-chips">'+chips+'</div>'+
+'</div>';
+stationsWrap.appendChild(st);
+st.querySelectorAll('.s-chip').forEach(ch=>{
+ch.addEventListener('click',e=>{e.stopPropagation();openModal(c,c.techs[+ch.dataset.ti]);});
+});
+});
+/* ═══════════ ROAD + STATION CONNECTORS ═══════════ */
+const roadSvg=document.getElementById('roadSvg');
+const branchSvg=document.getElementById('branchSvg');
+const hubNode=document.getElementById('hubNode');
+const endNode=document.getElementById('endNode');
+let roadLen=0,currentP=0,stationColorStops=[];
+let maxProg=0;
+const revealed=new Set();
+const PAD=13;
+const GAP=8;
+function catmullRom(pts){
+let d='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+for(let i=0;i<pts.length-1;i++){
+const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+const c1x=p1.x+(p2.x-p0.x)/6,c1y=p1.y+(p2.y-p0.y)/6;
+const c2x=p2.x-(p3.x-p1.x)/6,c2y=p2.y-(p3.y-p1.y)/6;
+d+=' C '+c1x.toFixed(1)+' '+c1y.toFixed(1)+', '+c2x.toFixed(1)+' '+c2y.toFixed(1)+', '+p2.x.toFixed(1)+' '+p2.y.toFixed(1);
+}
+return d;
+}
+function chipW(name){
+const small=window.innerWidth<=760;
+return Math.round(name.length*(small?5.1:6.1)+(small?20:30));
+}
+function packRows(techs,maxW){
+const rows=[];let cur=[],acc=0;
+for(const t of techs){
+const w=chipW(t.n);
+if(cur.length&&acc+w+GAP>maxW){rows.push(cur);cur=[];acc=0;}
+cur.push({t,w});acc+=w+GAP;
+}
+if(cur.length)rows.push(cur);
+return rows;
+}
+const rowWidth=row=>row.reduce((a,c)=>a+c.w,0)+GAP*(row.length-1);
+function buildRoad(){
+const w=road.clientWidth;
+const stEls=[...road.querySelectorAll('.station')];
+const small=window.innerWidth<=760;
+stEls.forEach(st=>{
+const cat=CATS.find(c=>c.id===st.dataset.cat);
+const card=st.querySelector('.s-card');
+const maxCardW=0.46*w;
+const estRows=packRows(cat.techs,maxCardW-2*PAD);
+const widest=Math.max(...estRows.map(rowWidth));
+const cardW=Math.min(maxCardW,Math.max(small?130:150,widest+2*PAD));
+card.style.width=cardW+'px';
+if(st.classList.contains('pos-r')){card.style.left='auto';card.style.right='50.5%';}
+else{card.style.right='auto';card.style.left='50.5%';}
+st.style.height=(card.offsetHeight+26)+'px';
+});
+const h=road.clientHeight;
+roadSvg.setAttribute('viewBox','0 0 '+w+' '+h);
+branchSvg.setAttribute('viewBox','0 0 '+w+' '+h);
+const rRect=road.getBoundingClientRect();
+const rel=el=>{
+const m=el.getBoundingClientRect();
+return {x:m.left-rRect.left,y:m.top-rRect.top,w:m.width,h:m.height};
+};
+const center=el=>{
+const m=el.getBoundingClientRect();
+return {x:m.left+m.width/2-rRect.left,y:m.top+m.height/2-rRect.top};
+};
+const markers=[...road.querySelectorAll('.s-marker')];
+markers.forEach((mk,i)=>{mk.style.left=(SWAY[i]*100)+'%';});
+const pts=[center(hubNode)];
+markers.forEach(mk=>pts.push(center(mk)));
+pts.push(center(endNode));
+const d=catmullRom(pts);
+let travelerHtml='';
+if(!reduced){
+travelerHtml=
+'<g class="traveler">'+
+'<circle class="traveler-glow" r="9"/>'+
+'<circle class="traveler-core" r="4.5"/>'+
+'<animateMotion dur="16s" repeatCount="indefinite" path="'+d+'"/>'+
+'</g>';
+}
+roadSvg.innerHTML=
+'<defs>'+
+'<linearGradient id="edgeGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="'+h+'">'+
+'<stop offset="0" style="stop-color:var(--line2)"/>'+
+'<stop offset=".5" style="stop-color:var(--acc-line)"/>'+
+'<stop offset="1" style="stop-color:var(--line2)"/>'+
+'</linearGradient>'+
+'<linearGradient id="progGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="'+h+'"></linearGradient>'+
+'<filter id="haloBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>'+
+'</defs>'+
+'<path id="roadHalo" d="'+d+'" filter="url(#haloBlur)"/>'+
+'<path id="roadEdge" d="'+d+'"/>'+
+'<path id="roadAsphalt" d="'+d+'"/>'+
+'<path id="roadCenter" d="'+d+'"/>'+
+'<path id="roadProgress" d="'+d+'"/>'+
+'<circle class="prog-tip-halo" id="tipHalo" r="11" cx="-20" cy="-20" fill="var(--acc)"/>'+
+'<circle class="prog-tip" id="tipDot" r="5.5" cx="-20" cy="-20" fill="var(--acc)"/>'+
+travelerHtml;
+const prog=document.getElementById('roadProgress');
+roadLen=prog.getTotalLength();
+prog.style.strokeDasharray=roadLen;
+prog.style.strokeDashoffset=roadLen*(1-maxProg);
+const fracOf=y=>{
+let lo=0,hi=roadLen;
+for(let k=0;k<26;k++){
+const mid=(lo+hi)/2;
+if(prog.getPointAtLength(mid).y<y)lo=mid;else hi=mid;
+}
+return (lo+hi)/2/roadLen;
+};
+stEls.forEach(st=>{
+st.dataset.frac=fracOf(center(st.querySelector('.s-marker')).y);
+});
+const hubFrac=fracOf(center(hubNode).y);
+const flagFrac=fracOf(center(endNode).y);
+const grad=document.getElementById('progGrad');
+const stops=[{o:0,c:'var(--acc)'},{o:Math.max(.01,hubFrac),c:'var(--acc)'}];
+stEls.forEach(st=>{
+const cat=CATS.find(c=>c.id===st.dataset.cat);
+stops.push({o:+st.dataset.frac,c:cat.col});
+});
+stops.push({o:Math.min(.999,flagFrac),c:'var(--amb)'},{o:1,c:'var(--amb)'});
+stops.sort((a,b)=>a.o-b.o);
+grad.innerHTML=stops.map(s=>'<stop offset="'+s.o.toFixed(3)+'" style="stop-color:'+s.c+'"/>').join('');
+stationColorStops=stops;
+branchSvg.innerHTML='';
+const NS='http://www.w3.org/2000/svg';
+stEls.forEach((st,idx)=>{
+const cat=CATS.find(c=>c.id===st.dataset.cat);
+const posR=st.classList.contains('pos-r');
+const m=center(st.querySelector('.s-marker'));
+const cardR=rel(st.querySelector('.s-card'));
+const E=posR
+?{x:cardR.x+cardR.w,y:cardR.y+cardR.h*0.5}
+:{x:cardR.x,y:cardR.y+cardR.h*0.5};
+const bend=Math.min(70,Math.max(24,Math.abs(m.x-E.x)*0.4));
+const cd=posR
+?'M '+m.x.toFixed(1)+' '+m.y.toFixed(1)+' C '+(m.x-bend).toFixed(1)+' '+m.y.toFixed(1)+', '+(E.x+bend).toFixed(1)+' '+E.y.toFixed(1)+', '+E.x.toFixed(1)+' '+E.y.toFixed(1)
+:'M '+m.x.toFixed(1)+' '+m.y.toFixed(1)+' C '+(m.x+bend).toFixed(1)+' '+m.y.toFixed(1)+', '+(E.x-bend).toFixed(1)+' '+E.y.toFixed(1)+', '+E.x.toFixed(1)+' '+E.y.toFixed(1);
+const conn=document.createElementNS(NS,'path');
+conn.setAttribute('class','connline'+(revealed.has(cat.id)?' grown':''));
+conn.setAttribute('data-cat',cat.id);
+conn.setAttribute('pathLength','1');
+conn.setAttribute('d',cd);
+conn.style.stroke=cat.col;
+conn.style.setProperty('--bd',(0.12+idx*0.03)+'s');
+branchSvg.appendChild(conn);
+if(revealed.has(cat.id))st.classList.add('in');
+});
+if(reduced){
+stEls.forEach(st=>st.classList.add('in'));
+endNode.classList.add('in');
+maxProg=1;
+prog.style.strokeDashoffset=0;
+document.getElementById('tipDot').style.display='none';
+document.getElementById('tipHalo').style.display='none';
+return;
+}
+updateProgress();
+checkStations();
+}
+function colorAtProgress(p){
+let best=stationColorStops[0];
+for(const s of stationColorStops){
+if(Math.abs(s.o-p)<Math.abs(best.o-p))best=s;
+}
+return best.c;
+}
+function updateProgress(){
+const prog=document.getElementById('roadProgress');
+if(!prog||!roadLen)return;
+const rect=road.getBoundingClientRect();
+const vh=window.innerHeight;
+const p=Math.min(1,Math.max(0,(vh*0.86-rect.top)/rect.height));
+if(p>maxProg)maxProg=p;
+currentP=maxProg;
+prog.style.strokeDashoffset=roadLen*(1-currentP);
+const tip=document.getElementById('tipDot');
+const halo=document.getElementById('tipHalo');
+if(currentP>0.004&&currentP<0.999){
+const tp=prog.getPointAtLength(roadLen*currentP);
+tip.setAttribute('cx',tp.x);tip.setAttribute('cy',tp.y);
+halo.setAttribute('cx',tp.x);halo.setAttribute('cy',tp.y);
+tip.style.opacity=1;halo.style.opacity=1;
+const c=colorAtProgress(currentP);
+tip.style.fill=c;tip.style.color=c;
+halo.style.fill=c;
+}else{
+tip.style.opacity=0;halo.style.opacity=0;
+}
+}
+function checkStations(){
+if(reduced)return;
+road.querySelectorAll('.station').forEach(st=>{
+const f=+st.dataset.frac;
+if(!st.classList.contains('in')&&currentP>=f-0.015){
+st.classList.add('in');
+revealed.add(st.dataset.cat);
+road.querySelectorAll('.connline[data-cat="'+st.dataset.cat+'"]').forEach(t=>t.classList.add('grown'));
+}
+});
+if(currentP>=0.985)endNode.classList.add('in');
+}
+function onScroll(){updateProgress();checkStations();}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',()=>{clearTimeout(window.__rb);window.__rb=setTimeout(buildRoad,180);});
+buildRoad();
+/* ═══════════ STAGE 1 — SamarPlanner modules ═══════════ */
+(function(){
+const stage=document.getElementById('modStage');
+if(!stage)return;
+const cap=document.getElementById('modCap');
+const banner=document.getElementById('modBanner');
+const boxes=[...stage.querySelectorAll('.mod-box')];
+boxes.forEach(b=>{const g=b.querySelector('.mod-cells');for(let i=0;i<9;i++)g.appendChild(document.createElement('i'));});
+function lightAll(){
+boxes.forEach(b=>{b.classList.add('active');b.querySelectorAll('i').forEach(c=>c.classList.add('lit'));});
+banner.classList.add('show');
+setCap(cap,'پنج ماژول، یک پلتفرم بهره‌وری — همه سرِ جای خود','five modules, one productivity platform — all in place');
+}
+if(reduced){lightAll();return;}
+async function cycle(){
+while(true){
+boxes.forEach(b=>{b.classList.remove('active');b.querySelectorAll('i').forEach(c=>c.classList.remove('lit'));});
+banner.classList.remove('show');
+setCap(cap,'یک پلتفرم بهره‌وری — پنج ماژول مستقل','one productivity platform — five independent modules');
+await wait(2100);
+for(const b of boxes){
+b.classList.add('active');
+setCap(cap,'ماژول '+b.dataset.name+' — سرِ جای خودش می‌نشیند…','module '+b.dataset.name+' takes its place…');
+const cells=[...b.querySelectorAll('i')];
+for(const c of cells){c.classList.add('lit');await wait(45);}
+await wait(180);
+}
+setCap(cap,'و همهٔ ماژول‌ها یک ساختار چهارلایه دارند','and every module shares one four-layer structure');
+banner.classList.add('show');
+await wait(3800);
+boxes.forEach(b=>b.querySelectorAll('i').forEach(c=>c.classList.remove('lit')));
+banner.classList.remove('show');
+await wait(600);
+}
+}
+cycle();
+})();
+/* ═══════════ STAGE 2 — Searchify ═══════════ */
+(function(){
+const typed=document.getElementById('sfTyped');
+if(!typed)return;
+const cap=document.getElementById('sfCap');
+const curS=document.getElementById('sfCur');
+const fields=[...document.querySelectorAll('#sfFields span')];
+const rowsEls=[...document.querySelectorAll('#sfRows .sf-row')];
+const stats=document.getElementById('sfStats');
+const query='elastic';
+function showFinal(){
+typed.textContent=query;curS.style.display='none';
+fields.forEach(f=>f.classList.add('on'));
+rowsEls.forEach(r=>{
+const t=r.querySelector('span');
+if(r.dataset.m==='1'){r.classList.add('hit');t.innerHTML=t.textContent.replace(r.dataset.w,'<b>'+r.dataset.w+'</b>');}
+else r.classList.add('off');
+});
+stats.classList.add('show');
+setCap(cap,'نتیجه‌ها با sort بر اساس rating برگشتند ✓','results returned, sorted by rating ✓');
+}
+if(reduced){showFinal();return;}
+async function cycle(){
+while(true){
+typed.textContent='';curS.style.display='inline-block';
+fields.forEach(f=>f.classList.remove('on'));
+rowsEls.forEach(r=>{r.classList.remove('hit','off');const t=r.querySelector('span');t.textContent=t.textContent;});
+stats.classList.remove('show');
+setCap(cap,'کوئری تایپ می‌شود…','typing the query…');
+await wait(1200);
+for(const ch of query){typed.textContent+=ch;await wait(90);}
+await wait(400);
+curS.style.display='none';
+setCap(cap,'جستجوی تمام‌متنی روی همهٔ فیلدها…','full-text search across every field…');
+for(const f of fields){f.classList.add('on');await wait(230);}
+await wait(400);
+setCap(cap,'فیلترها اعمال می‌شوند — فقط نتیجه‌های مرتبط…','filters apply — only relevant hits…');
+for(const r of rowsEls){
+await wait(380);
+const t=r.querySelector('span');
+if(r.dataset.m==='1'){r.classList.add('hit');t.innerHTML=t.textContent.replace(r.dataset.w,'<b>'+r.dataset.w+'</b>');}
+else r.classList.add('off');
+}
+await wait(420);
+stats.classList.add('show');
+setCap(cap,'نتیجه‌ها با sort بر اساس rating برگشتند ✓','results returned, sorted by rating ✓');
+await wait(3600);
+}
+}
+cycle();
+})();
+/* ═══════════ STAGE 3 — IdentityProvider journey ═══════════ */
+(function(){
+const grid=document.getElementById('ipGrid');
+if(!grid)return;
+const cap=document.getElementById('ipCap');
+const banner=document.getElementById('ipBanner');
+const boxes=[...grid.querySelectorAll('.ip-box')];
+const caps=[
+{fa:'IdentityProvider.Basic — آشنایی با Claims و ClaimsIdentity',en:'IdentityProvider.Basic — meeting Claims & ClaimsIdentity'},
+{fa:'IdentityProvider.Authentication — ساخت Authentication Handler از صفر',en:'IdentityProvider.Authentication — a custom handler from scratch'},
+{fa:'IdentityProvider.Identity — ثبت‌نام، ورود و نقش‌ها با ASP.NET Core Identity',en:'IdentityProvider.Identity — registration, login & roles'},
+{fa:'IdentityProvider.Jwt — توکن با کلید متقارن و نامتقارن',en:'IdentityProvider.Jwt — symmetric & asymmetric keys'},
+{fa:'IdentityProvider.AuthenticationWithAuthorization — کنترل دسترسی با Policy',en:'IdentityProvider.AuthenticationWithAuthorization — policy-based access'},
+{fa:'IdentityProvider.OAuth — جریان OAuth 2.0 به زبان ساده',en:'IdentityProvider.OAuth — the OAuth 2.0 flow, simplified'}
+];
+function showFinal(){
+boxes.forEach(b=>b.classList.add('on'));
+banner.classList.add('show');
+setCap(cap,'شش پروژهٔ مستقل — هرکدام یک مفهوم','six independent projects — one concept each');
+}
+if(reduced){showFinal();return;}
+async function cycle(){
+while(true){
+boxes.forEach(b=>b.classList.remove('on'));
+banner.classList.remove('show');
+setCap(cap,'یک ریپازیتوری — شش پروژهٔ آموزشی مستقل','one repository — six independent learning projects');
+await wait(2000);
+for(let i=0;i<boxes.length;i++){
+boxes[i].classList.add('on');
+setCap(cap,caps[i].fa,caps[i].en);
+await wait(1150);
+}
+setCap(cap,'هر پوشه مستقل است — از هرکجا می‌توانی شروع کنی','every folder is self-contained — start anywhere');
+banner.classList.add('show');
+await wait(3600);
+boxes.forEach(b=>b.classList.remove('on'));
+banner.classList.remove('show');
+await wait(600);
+}
+}
+cycle();
+})();
+/* ═══════════ REVEAL ON SCROLL ═══════════ */
+const io=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('in');
+const parent=e.target.parentElement;
+if(parent){[...parent.children].forEach((c,i)=>{
+if(c.classList.contains('rv')||c.classList.contains('rv-scale'))c.style.transitionDelay=(i*0.07)+'s';
+});}
+io.unobserve(e.target);
+}
+});
+},{threshold:0.12});
+document.querySelectorAll('.rv,.rv-scale').forEach(el=>io.observe(el));
+/* ═══════════ COUNTERS ═══════════ */
+const cio=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+const el=e.target,target=+el.dataset.count,suf=el.dataset.suffix||'';
+if(reduced){el.textContent=target+suf;cio.unobserve(el);return;}
+let curN=0;const step=Math.max(1,Math.ceil(target/40));
+const tick=()=>{
+curN+=step;
+if(curN>=target){curN=target;el.textContent=curN+suf;}
+else{el.textContent=curN+suf;requestAnimationFrame(()=>setTimeout(tick,30));}
+};
+tick();cio.unobserve(el);
+}
+});
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+/* ═══════════ BOOKSHELF SPINE PROGRESS ═══════════ */
+const roadProg=document.getElementById('roadProg');
+window.addEventListener('scroll',()=>{
+const sec=document.getElementById('notes');
+if(!sec||!roadProg)return;
+const rect=sec.getBoundingClientRect(),vh=window.innerHeight;
+const p=Math.min(1,Math.max(0,(vh-rect.top)/(rect.height+vh*0.3)));
+roadProg.style.height=(p*100)+'%';
+},{passive:true});
+/* ═══════════ NOTES VOL-01 · microscope descent ═══════════ */
+(async function bdCycle(){
+const gauge=document.getElementById('bdGauge');
+const fill=document.getElementById('bdFill');
+const viewport=document.getElementById('bdView');
+const cap=document.getElementById('bdCap');
+if(!gauge||!viewport||!cap)return;
+const scenes=[...viewport.querySelectorAll('.bd-scene')];
+const ticks=[...gauge.querySelectorAll('.bd-tick')];
+const caps=[
+{fa:'سطح — فقط نتیجه را می‌بینی',en:'Surface — you only see the result'},
+{fa:'موتور، مسیر اجرا را می‌چیند',en:'The engine plans the execution'},
+{fa:'داده روی دیسک کجاست؟',en:'Where does the data live on disk?'},
+{fa:'ساختار داده، مسیر را کوتاه می‌کند',en:'The data structure shortens the path'},
+{fa:'هسته — حالا می‌دانی چرا',en:'The core — now you know why'}
+];
+const tickCenter=k=>{
+const g=gauge.getBoundingClientRect(),t=ticks[k].getBoundingClientRect();
+return t.top-g.top+t.height/2;
+};
+function show(i){
+scenes.forEach((s,j)=>{if(j===i){s.classList.remove('on');void s.offsetWidth;s.classList.add('on');}else s.classList.remove('on');});
+ticks.forEach((t,j)=>t.classList.toggle('active',j<=i));
+/* the fill runs exactly from the FIRST tick center to the CURRENT tick center —
+   it never extends past the last dot */
+const first=tickCenter(0),last=tickCenter(ticks.length-1);
+fill.style.top=first+'px';
+fill.style.height=Math.max(0,(i/(scenes.length-1))*(last-first))+'px';
+setCap(cap,caps[i].fa,caps[i].en);
+}
+if(reduced){show(scenes.length-1);return;}
+while(true){for(let i=0;i<scenes.length;i++){show(i);await wait(4200);}}
+})();
+/* ═══════════ NOTES VOL-02 · 3 tiers (English-only captions) ═══════════ */
+(async function dpCycle(){
+const stage=document.getElementById('dpStage');const cap=document.getElementById('dpCap');
+if(!stage||!cap)return;
+const tiers=[...stage.querySelectorAll('.dp-tier')];const allChips=[...stage.querySelectorAll('.dp-chip')];
+const capSet=s=>{cap.textContent=s;};
+const tierMeta=[
+'Beginner tier — 5 foundational patterns',
+'Intermediate tier — 5 flexibility patterns',
+'Advanced tier — 14 architectural patterns'];
+if(reduced){tiers.forEach(t=>t.classList.add('done','active'));allChips.forEach(c=>c.classList.add('on'));capSet('24 patterns in 3 tiers — from beginner to architect');return;}
+while(true){
+tiers.forEach(t=>{t.classList.remove('active','done');});allChips.forEach(c=>c.classList.remove('on'));
+capSet('24 design patterns — organized in 3 tiers');
+await wait(900);
+for(let t=0;t<tiers.length;t++){
+const tier=tiers[t];tier.classList.add('active');capSet(tierMeta[t]);
+const chips=[...tier.querySelectorAll('.dp-chip')];
+for(const c of chips){c.classList.add('on');await wait(130);}
+await wait(600);tier.classList.add('done');
+if(t<tiers.length-1)tier.classList.remove('active');
+await wait(400);}
+capSet('24 patterns in 3 tiers — from beginner to architect');
+await wait(2800);}
+})();
+/* ═══════════ NOTES VOL-03 · linux terminal ═══════════ */
+(async function lpCycle(){
+const term=document.getElementById('lpTerm');const cap=document.getElementById('lpCap');
+if(!term||!cap)return;
+function addLine(cls,text){const s=document.createElement('span');s.className=cls;s.innerHTML=text+'\n';term.appendChild(s);}
+async function typeLine(cls,text,speed=32){const s=document.createElement('span');s.className=cls;term.appendChild(s);for(const ch of text){s.textContent+=ch;await wait(speed);}s.textContent+='\n';}
+if(reduced){addLine('pp','root@devops:~# whoami');addLine('out','sysadmin');addLine('ok','✓ LPIC-2 آماده است — موفق باشید!');setCap(cap,'ترمینال یه مدیر سیستم','a sysadmin\'s terminal');return;}
+while(true){
+term.innerHTML='';
+setCap(cap,'ترمینال را باز کن — کلاس شروع شد','open the terminal — class has begun');
+await wait(700);
+await typeLine('pp','root@devops:~# whoami');addLine('out','sysadmin');await wait(400);
+await typeLine('pp','root@devops:~# df -h /');
+addLine('head','Filesystem      Size  Used Avail Use% Mounted on');
+addLine('out','/dev/sda1       100G   42G   58G  42% /');await wait(500);
+await typeLine('pp','root@devops:~# systemctl status nginx');
+addLine('ok','● nginx.service — A high performance web server');
+addLine('out','     Active: active (running) since Mon 2026-08-10');await wait(500);
+await typeLine('pp','root@devops:~# ./lpic-persian --level=advanced');
+addLine('ok','✓ LPIC-2 آماده است — موفق باشید!');
+setCap(cap,'ترمینال یه مدیر سیستم','a sysadmin\'s terminal');
+await wait(3400);}
+})();
+</script>
+</body>
+</html>
