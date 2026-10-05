@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>علیرضا حایری — توسعه‌دهندهٔ بک‌اند | Alireza Haeri</title>
-<meta name="description" content="توسعه‌دهندهٔ بک‌اند .NET — سیستم‌های ماژولار، قابل‌نگهداری و production-minded">
+<title>علیرضا حایری — توسعه‌دهندهٔ بک‌اند .NET | Alireza Haeri</title>
+<meta name="description" content="پورتفولیوی علیرضا حایری، توسعه‌دهندهٔ بک‌اند .NET؛ پروژه‌های نرم‌افزاری، مهارت‌ها و منابع آموزشی متن‌باز.">
+<link rel="canonical" href="https://alireza-haeri.ir/">
+<meta name="theme-color" content="#F6F2E9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alireza Haeri">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="علیرضا حایری | Alireza Haeri — .NET Backend Developer">
+<meta property="og:description" content="پروژه‌های نرم‌افزاری، مهارت‌ها و منابع آموزشی متن‌باز علیرضا حایری.">
+<meta property="og:url" content="https://alireza-haeri.ir/">
+<meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E5ADB'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='bold' fill='%23F6F2E9' text-anchor='middle'%3EAH%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/300.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn/400.css">
@@ -66,6 +76,7 @@ html[lang="en"] .fa{display:none!important}
 html[lang="en"] body{line-height:1.75}
 a{color:var(--acc);text-decoration:none}
 a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc-line);outline-offset:3px}
 ::selection{background:var(--acc-soft)}
 code,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:embed}
 img,svg{max-width:100%}
@@ -89,8 +100,6 @@ img,svg{max-width:100%}
 @keyframes drawline{to{stroke-dashoffset:0}}
 @keyframes pulseRing{0%{box-shadow:0 0 0 0 var(--acc-soft)}70%{box-shadow:0 0 0 10px rgba(30,90,219,0)}100%{box-shadow:0 0 0 0 rgba(30,90,219,0)}}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes countGlow{0%,100%{text-shadow:none}50%{text-shadow:0 0 18px var(--acc-soft)}}
-@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
 @keyframes spinSlow{to{transform:rotate(360deg)}}
 @keyframes bannerPop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes dashMove{to{stroke-dashoffset:-14}}
@@ -107,7 +116,7 @@ img,svg{max-width:100%}
 .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);animation:fadeDown .5s ease-out both}
 .topbar-in{display:flex;align-items:center;gap:12px;height:58px}
 .brand{font-weight:900;font-size:15px;white-space:nowrap;display:flex;align-items:center;gap:9px;color:var(--ink)}
-.brand .avatar{width:30px;height:30px;border:2px solid var(--line);animation:breathe 4s ease-in-out infinite}
+.brand .avatar{width:30px;height:30px;border:2px solid var(--line)}
 .topbar-nav{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none}
 .topbar-nav::-webkit-scrollbar{display:none}
 .topbar-nav a{font-size:12px;color:var(--mut);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 11px;white-space:nowrap;transition:.25s}
@@ -125,13 +134,15 @@ html[data-theme="light"] .iconb svg.moon{display:none}
 .iconb svg{width:18px;height:18px;color:var(--mut)}
 /* ═══════════ HERO ═══════════ */
 .hero{position:relative;overflow:hidden;padding:70px 0 80px;border-bottom:1px solid var(--line)}
-.hero .shape{position:absolute;opacity:.5;pointer-events:none;animation:floaty 9s ease-in-out infinite}
+.hero .shape{position:absolute;opacity:.32;pointer-events:none;animation:floaty 12s ease-in-out infinite}
 .hero .shape svg{width:100%;height:100%}
 .hero .wrap{position:relative;z-index:2}
 .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
-.hero-photo{width:96px;height:96px;border:3px solid var(--acc-line);margin:0 auto 22px;animation:popIn .7s cubic-bezier(.2,.9,.3,1.3) both,breathe 5s ease-in-out 1s infinite;box-shadow:0 12px 30px -8px var(--acc-soft)}
+.hero-photo{width:96px;height:96px;border:3px solid var(--acc-line);margin:0 auto 22px;animation:popIn .7s cubic-bezier(.2,.9,.3,1.3) both;box-shadow:0 12px 30px -8px var(--acc-soft)}
 .hero-role-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:12.5px;color:var(--acc);background:var(--acc-soft);border:1px solid var(--acc-line);padding:6px 16px;border-radius:7px;direction:ltr;animation:popIn .6s .05s cubic-bezier(.2,.9,.3,1.3) both;margin-bottom:18px}
-.hero-role-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);animation:blink 1.8s steps(1) infinite}
+.hero-role-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--grn)}
+html[lang="fa"] .hero-role-pill{direction:rtl;font-family:'Vazirmatn',Tahoma,sans-serif}
+html[lang="en"] .hero-role-pill{direction:ltr}
 .hero h1{font-size:clamp(34px,5.2vw,58px);font-weight:900;line-height:1.3;letter-spacing:-.01em;animation:fadeUp .7s .1s ease-out both}
 html[lang="en"] .hero h1{font-family:var(--mono);letter-spacing:-.03em}
 .uword{position:relative;display:inline-block;white-space:nowrap}
@@ -159,10 +170,12 @@ html[lang="en"] .hero h1{font-family:var(--mono);letter-spacing:-.03em}
 .scroll-hint svg{width:24px;height:24px;animation:bounce 1.8s ease-in-out infinite}
 /* ═══════════ STATS ═══════════ */
 .stats{padding:0;border-bottom:1px dashed var(--line2);background:var(--surface)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stats-grid--compact{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat[hidden]{display:none!important}
 .stat{padding:34px 20px;text-align:center;border-inline-end:1px dashed var(--line2);position:relative}
 .stat:last-child{border-inline-end:none}
-.stat .num{font-family:var(--mono);font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--acc);line-height:1;animation:countGlow 3s ease-in-out infinite;direction:ltr}
+.stat .num{font-family:var(--mono);font-size:clamp(30px,4vw,42px);font-weight:600;color:var(--acc);line-height:1;direction:ltr}
 .stat .lbl{font-size:13px;color:var(--mut);margin-top:8px}
 .stat svg{width:22px;height:22px;color:var(--dim);margin:0 auto 8px;display:block}
 /* ═══════════ SECTIONS ═══════════ */
@@ -329,7 +342,9 @@ html[data-theme="dark"] .mini-banner{color:#10141A}
 .notes{border-bottom:1px dashed var(--line2)}
 .fa-quote{display:inline-flex;gap:12px;align-items:center;background:var(--amb-soft);border:1px solid rgba(194,120,3,.3);border-radius:10px;padding:12px 20px;margin:14px 0 6px;font-size:15px;font-weight:700;color:var(--amb)}
 .fa-quote svg{flex-shrink:0}
-.star-pill{display:inline-flex;align-items:center;gap:5px;background:var(--amb);color:#FDFBF5;font-size:11px;font-weight:700;padding:3px 11px;border-radius:999px;font-family:var(--mono);animation:wiggle 4s ease-in-out infinite}
+.star-pill{display:inline-flex;align-items:center;gap:5px;background:var(--amb);color:#FDFBF5;font-size:11px;font-weight:700;padding:3px 11px;border-radius:999px;font-family:var(--mono);text-decoration:none;white-space:nowrap;transition:transform .2s,filter .2s}
+.star-pill:hover{transform:translateY(-1px);filter:brightness(1.06);text-decoration:none}
+html[data-theme="dark"] .star-pill{color:#171A14}
 .shelf-stats{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 18px}
 .shelf-stats span{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);border:1px dashed var(--line2);background:var(--surface);border-radius:999px;padding:6px 16px;transition:.25s}
 .shelf-stats span:hover{transform:translateY(-2px);border-color:var(--acc-line);color:var(--ink)}
@@ -448,8 +463,6 @@ footer{padding:50px 0 60px}
 .foot-profile .role{font-size:12px;color:var(--mut)}
 .foot-links{display:flex;gap:8px;flex-wrap:wrap}
 .foot-meta{text-align:center;color:var(--dim);font-size:13px;line-height:2;margin-top:26px;padding-top:26px;border-top:1px dashed var(--line2)}
-.foot-meta a{color:var(--acc)}
-.foot-meta .mono{color:var(--red)}
 /* ═══════════ REVEAL + RESPONSIVE + REDUCED ═══════════ */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -458,7 +471,8 @@ footer{padding:50px 0 60px}
 @media(max-width:900px){
 .feat-top{grid-template-columns:1fr}
 .feat-stage{border-inline-start:0;border-top:1px solid var(--term-line)}
-.stats-grid{grid-template-columns:repeat(2,1fr)}
+.stats-grid,.stats-grid--compact{grid-template-columns:repeat(2,1fr)}
+.stats-grid--compact .stat:last-child{grid-column:1/-1}
 .stat:nth-child(2){border-inline-end:none}
 .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px dashed var(--line2)}
 .author-big{flex-direction:column;text-align:center}
@@ -486,6 +500,7 @@ footer{padding:50px 0 60px}
 .bd-stage{grid-template-columns:34px 1fr;gap:8px}
 }
 @media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
 *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 .traveler{display:none}
 }
@@ -550,8 +565,8 @@ footer{padding:50px 0 60px}
 <span class="fa">علیرضا حایری</span><span class="en">Alireza Haeri</span>
 </span>
 <div class="topbar-nav">
-<a href="#stack"><span class="fa">مسیر مهارت‌ها</span><span class="en">Skill Road</span></a>
 <a href="#projects"><span class="fa">پروژه‌ها</span><span class="en">Projects</span></a>
+<a href="#stack"><span class="fa">مهارت‌ها</span><span class="en">Skills</span></a>
 <a href="#notes"><span class="fa">یادداشت‌ها</span><span class="en">Notes</span></a>
 <a href="#contact"><span class="fa">تماس</span><span class="en">Contact</span></a>
 </div>
@@ -578,7 +593,7 @@ footer{padding:50px 0 60px}
 <div class="wrap">
 <div class="hero-inner">
 <span class="avatar hero-photo"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="avatar-fb" style="font-size:26px">AH</span></span>
-<div class="hero-role-pill"><span class="dot"></span>BACK-END DEVELOPER · .NET · BLAZOR · LOGICAL ARCHITECTURE</div>
+<div class="hero-role-pill"><span class="dot" aria-hidden="true"></span><span class="fa">توسعه‌دهندهٔ بک‌اند · .NET · سامانه‌های ماژولار</span><span class="en">BACK-END DEVELOPER · .NET · MODULAR SYSTEMS</span></div>
 <h1>
 <span class="fa">علیرضا <span class="uword">حایری<svg class="uscribble" viewBox="0 0 120 10" preserveAspectRatio="none"><path d="M2 7 Q 20 2 40 6 T 80 6 T 118 4" fill="none" stroke="var(--amb)" stroke-width="3" stroke-linecap="round"/></svg></span></span>
 <span class="en">Alireza <span class="uword">Haeri<svg class="uscribble" viewBox="0 0 120 10" preserveAspectRatio="none"><path d="M2 7 Q 20 2 40 6 T 80 6 T 118 4" fill="none" stroke="var(--amb)" stroke-width="3" stroke-linecap="round"/></svg></span></span>
@@ -594,7 +609,7 @@ footer{padding:50px 0 60px}
 <div class="hero-chips">
 <span><b>.NET</b><span class="fa">بک‌اند</span><span class="en">Backend</span></span>
 <span><b>Blazor</b><span class="fa">فول‌استک دات‌نتی</span><span class="en">Full-stack .NET</span></span>
-<span><b>Clean</b><span class="fa">معماری منطقی</span><span class="en">Logical architecture</span></span>
+<span><b>Modular</b><span class="fa">معماری ماژولار</span><span class="en">Modular architecture</span></span>
 <span><b>Tested</b><span class="fa">تست‌محور</span><span class="en">Test-minded</span></span>
 </div>
 <div class="hero-actions">
@@ -603,7 +618,7 @@ footer{padding:50px 0 60px}
 <svg viewBox="0 0 24 24" class="ic sm"><use href="#i-down"/></svg>
 </a>
 <a class="btn" href="#stack">
-<span class="fa">مسیر مهارت‌ها</span><span class="en">Skill Road</span>
+<span class="fa">مهارت‌ها</span><span class="en">Skills</span>
 <svg viewBox="0 0 24 24" class="ic sm"><use href="#i-bulb"/></svg>
 </a>
 </div>
@@ -614,58 +629,23 @@ footer{padding:50px 0 60px}
 <!-- ═══════════ STATS ═══════════ -->
 <section class="stats" style="padding:0">
 <div class="wrap">
-<div class="stats-grid">
-<div class="stat rv"><svg class="ic"><use href="#i-zap"/></svg><div class="num" data-count="3">0</div><div class="lbl"><span class="fa">پروژهٔ شاخص</span><span class="en">Featured Projects</span></div></div>
-<div class="stat rv"><svg class="ic"><use href="#i-book"/></svg><div class="num" data-count="3">0</div><div class="lbl"><span class="fa">سری آموزشی رایگان</span><span class="en">Free Learning Series</span></div></div>
-<div class="stat rv"><svg class="ic"><use href="#i-grid"/></svg><div class="num" data-count="24">0</div><div class="lbl"><span class="fa">الگوی طراحی مستندشده</span><span class="en">Design Patterns Documented</span></div></div>
-<div class="stat rv"><svg class="ic"><use href="#i-star"/></svg><div class="num" data-count="63" data-suffix="+">0</div><div class="lbl"><span class="fa">ستارهٔ گیت‌هاب</span><span class="en">GitHub Stars</span></div></div>
+<div class="stats-grid" id="statsGrid">
+<div class="stat rv"><svg class="ic"><use href="#i-zap"/></svg><div class="num" data-counter="projects">—</div><div class="lbl"><span class="fa">پروژهٔ شاخص</span><span class="en">Featured Projects</span></div></div>
+<div class="stat rv"><svg class="ic"><use href="#i-book"/></svg><div class="num" data-counter="learning">—</div><div class="lbl"><span class="fa">منبع آموزشی</span><span class="en">Learning Resources</span></div></div>
+<div class="stat rv"><svg class="ic"><use href="#i-grid"/></svg><div class="num" data-counter="patterns">—</div><div class="lbl"><span class="fa">الگوی طراحی</span><span class="en">Design Patterns</span></div></div>
+<div class="stat" id="githubStarsStat"><svg class="ic"><use href="#i-star"/></svg><div class="num" id="githubStars">—</div><div class="lbl"><span class="fa">مجموع ستاره‌های مخزن‌های عمومی GitHub</span><span class="en">Stars across public GitHub repos</span></div></div>
 </div>
 </div>
 </section>
 <main class="wrap">
-<!-- ═══════════ 01 — SKILL ROAD ═══════════ -->
-<section id="stack" class="stack">
-<div class="section-head rv">
-<span class="section-num">01</span>
-<h2><span class="fa">مسیر مهارت‌ها — یک جادهٔ پیوسته با شش ایستگاه</span><span class="en">The Skill Road — one continuous route, six stations</span></h2>
-</div>
-<p class="lead rv">
-<span class="fa">با هر اسکرول، مسیر جلوی پای شما کشیده می‌شود و <b>رنگش کنارِ هر ایستگاه، هم‌رنگِ همان ایستگاه می‌شود</b>. ایستگاه‌ها فقط وقتی به آن‌ها می‌رسید ظاهر می‌شوند — و وقتی ساخته شوند، دیگر سرِ جای خود می‌مانند. روی هر فناوری کلیک کنید تا به زبان ساده بگویم دقیقاً چیست.</span>
-<span class="en">As you scroll, the route draws itself ahead of you and <b>its color shifts to match each station it passes</b>. Stations only appear when you arrive at them — and once built, they stay put. Click any technology for a plain-language explanation.</span>
-</p>
-<div class="road-card rv">
-<div class="road" id="road">
-<svg class="road-svg" id="roadSvg" aria-hidden="true"></svg>
-<svg id="branchSvg" aria-hidden="true"></svg>
-<div class="hub">
-<div class="hub-node" id="hubNode">
-<div class="hub-ava"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none'"></div>
-<div class="hub-lbl"><span class="fa">شروع مسیر</span><span class="en">The Start</span><span class="mono">.NET BACK-END</span></div>
-</div>
-</div>
-<div id="stations"></div>
-<div class="end" id="endNode">
-<div class="end-node">
-<span class="flag"><svg viewBox="0 0 24 24" class="ic"><use href="#i-flag"/></svg></span>
-<div class="end-lbl"><span class="fa">ادامه دارد…</span><span class="en">TO BE CONTINUED…</span></div>
-</div>
-</div>
-</div>
-<div class="map-hint">
-<svg viewBox="0 0 24 24" class="ic"><use href="#i-bulb"/></svg>
-<span class="fa"><b>اسکرول کنید</b> تا مسیر ساخته شود و ایستگاه‌ها یکی‌یکی ظاهر شوند · روی هر فناوری کلیک کنید تا «این چیه؟» را ببینید</span>
-<span class="en"><b>Scroll</b> to build the route and reveal stations one by one · click any technology to see “what is this?”</span>
-</div>
-</div>
-</section>
-<!-- ═══════════ 02 — PROJECTS ═══════════ -->
+<!-- ═══════════ 01 — PROJECTS ═══════════ -->
 <section id="projects" class="projects">
-<div class="section-head rv"><span class="section-num">02</span>
-<h2><span class="fa">پروژه‌ها — هرکدام با دموِ زندهٔ ایدهٔ مرکزی‌اش</span><span class="en">Projects — each with a live demo of its core idea</span></h2>
+<div class="section-head rv"><span class="section-num">01</span>
+<h2><span class="fa">پروژه‌ها — نگاهی نزدیک‌تر به ایده و ساختار هرکدام</span><span class="en">Projects — a closer look at what I’ve built</span></h2>
 </div>
 <p class="lead rv">
-<span class="fa">پروژه‌هایی که ساخته‌ام، تست کرده‌ام و منتشر کرده‌ام. کنار هر پروژه یک <b>انیمیشن کوچک</b> هست که نشان می‌دهد آن پروژه واقعاً چه می‌کند — کمی مکث کنید و تماشا کنید.</span>
-<span class="en">Projects I've built, tested, and shipped. Next to each one, a small <b>animation</b> shows what it actually does — pause for a moment and watch.</span>
+<span class="fa">چند نمونه از پروژه‌هایی که ساخته‌ام یا روی آن‌ها کار کرده‌ام. کنار بعضی از آن‌ها یک <b>نمایش بصری کوتاه</b> می‌بینید که ایدهٔ اصلی پروژه را توضیح می‌دهد.</span>
+<span class="en">A selection of projects I’ve built or worked on. Some include a short <b>visual walkthrough</b> of the idea behind them.</span>
 </p>
 <div class="proj-list">
 <!-- ★ PRJ-01 SamarPlanner -->
@@ -675,7 +655,7 @@ footer{padding:50px 0 60px}
 <div class="feat-head">
 <span class="pnum">PRJ-01</span>
 <h3>SamarPlanner</h3>
-<span class="pstatus live"><span class="pdot"></span><span class="fa">در تولید</span><span class="en">Live</span></span>
+<span class="pstatus lab"><span class="fa">دمو فعلاً در دسترس نیست</span><span class="en">Demo temporarily unavailable</span></span>
 </div>
 <p class="feat-desc">
 <span class="fa">اپلیکیشن <b>بهره‌وری شخصی</b> در اکوسیستم .NET — مدیریت کارهای روزانه، هدف‌ها، یادداشت‌ها و گزارش‌های دوره‌ای، همه در یک‌جا. یک <b>مونولیتِ ماژولار</b> با طراحی DDD-inspired، کلاینت‌های Blazor و MAUI، و تست در سه سطح. پروژه‌ای یادگیری‌محور، اما با معماریِ production-minded.</span>
@@ -683,9 +663,7 @@ footer{padding:50px 0 60px}
 </p>
 <div class="ftags"><span>Modular Monolith</span><span>DDD-inspired</span><span>JWT</span><span>Blazor · MAUI</span><span>xUnit</span></div>
 <div class="feat-links">
-<a class="btn primary sm" href="https://app.samarpln.ir" target="_blank" rel="noopener"><span class="fa">وب‌اپ</span><span class="en">Web App</span></a>
-<a class="btn sm" href="https://api.samarpln.ir/scalar" target="_blank" rel="noopener"><span class="fa">مستندات API</span><span class="en">API Docs</span></a>
-<a class="btn sm" href="https://samarpln.ir" target="_blank" rel="noopener"><span class="fa">لندینگ</span><span class="en">Landing</span></a>
+<a class="btn primary sm" href="https://github.com/alireza-haeri/SamarPlanner" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" class="ic sm fill"><use href="#i-github"/></svg><span class="fa">مخزن پروژه</span><span class="en">Source code</span></a>
 </div>
 </div>
 <div class="feat-stage" aria-hidden="true">
@@ -781,6 +759,41 @@ footer{padding:50px 0 60px}
 </div>
 </div>
 </div>
+</div>
+</div>
+</section>
+<!-- ═══════════ 02 — SKILL ROAD ═══════════ -->
+<section id="stack" class="stack">
+<div class="section-head rv">
+<span class="section-num">02</span>
+<h2><span class="fa">مسیر مهارت‌ها — یک جادهٔ پیوسته با شش ایستگاه</span><span class="en">The Skill Road — one continuous route, six stations</span></h2>
+</div>
+<p class="lead rv">
+<span class="fa">با هر اسکرول، مسیر جلوی پای شما کشیده می‌شود و <b>رنگش کنارِ هر ایستگاه، هم‌رنگِ همان ایستگاه می‌شود</b>. ایستگاه‌ها فقط وقتی به آن‌ها می‌رسید ظاهر می‌شوند — و وقتی ساخته شوند، دیگر سرِ جای خود می‌مانند. روی هر فناوری کلیک کنید تا به زبان ساده بگویم دقیقاً چیست.</span>
+<span class="en">As you scroll, the route draws itself ahead of you and <b>its color shifts to match each station it passes</b>. Stations only appear when you arrive at them — and once built, they stay put. Click any technology for a plain-language explanation.</span>
+</p>
+<div class="road-card rv">
+<div class="road" id="road">
+<svg class="road-svg" id="roadSvg" aria-hidden="true"></svg>
+<svg id="branchSvg" aria-hidden="true"></svg>
+<div class="hub">
+<div class="hub-node" id="hubNode">
+<div class="hub-ava"><img src="https://github.com/alireza-haeri.png" alt="Alireza Haeri" onerror="this.style.display='none'"></div>
+<div class="hub-lbl"><span class="fa">شروع مسیر</span><span class="en">The Start</span><span class="mono">.NET BACK-END</span></div>
+</div>
+</div>
+<div id="stations"></div>
+<div class="end" id="endNode">
+<div class="end-node">
+<span class="flag"><svg viewBox="0 0 24 24" class="ic"><use href="#i-flag"/></svg></span>
+<div class="end-lbl"><span class="fa">ادامه دارد…</span><span class="en">TO BE CONTINUED…</span></div>
+</div>
+</div>
+</div>
+<div class="map-hint">
+<svg viewBox="0 0 24 24" class="ic"><use href="#i-bulb"/></svg>
+<span class="fa"><b>اسکرول کنید</b> تا مسیر ساخته شود و ایستگاه‌ها یکی‌یکی ظاهر شوند · روی هر فناوری کلیک کنید تا «این چیه؟» را ببینید</span>
+<span class="en"><b>Scroll</b> to build the route and reveal stations one by one · click any technology to see “what is this?”</span>
 </div>
 </div>
 </section>
@@ -923,7 +936,7 @@ footer{padding:50px 0 60px}
 <span class="pnum">VOL-02</span>
 <h3>Persian-Design-Patterns</h3>
 <span class="pstatus fav"><span class="pdot"></span><span class="fa">کامل</span><span class="en">Complete</span></span>
-<span class="star-pill">★ 63</span>
+<a class="star-pill" id="patternStars" href="https://github.com/alireza-haeri/Persian-Design-Patterns" target="_blank" rel="noopener" aria-label="GitHub stars for Persian Design Patterns">★ —</a>
 </div>
 <p class="feat-desc">
 <span class="fa">مرجع کامل <b>۲۴ الگوی طراحی نرم‌افزار</b> به فارسی — مرتب در سه سطح <b>مبتدی، متوسط و پیشرفته</b> با مثال‌های کامل C# در .NET.</span>
@@ -1077,8 +1090,8 @@ alireza.haeri.dev@gmail.com
 </div>
 </div>
 <div class="foot-meta">
-<span class="fa">ساخته‌شده با <a href="#top">❤</a> و HTML/CSS/JS خالص · © <span id="year">2025</span> علیرضا حایری · <span class="mono">// exit 0</span></span>
-<span class="en">Built with <a href="#top">❤</a> and plain HTML/CSS/JS · © <span id="year2">2025</span> Alireza Haeri · <span class="mono">// exit 0</span></span>
+<span class="fa">© <span id="year">2026</span> علیرضا حایری</span>
+<span class="en">© <span id="year2">2026</span> Alireza Haeri</span>
 </div>
 </div>
 </footer>
@@ -1655,7 +1668,16 @@ io.unobserve(e.target);
 });
 },{threshold:0.12});
 document.querySelectorAll('.rv,.rv-scale').forEach(el=>io.observe(el));
-/* ═══════════ COUNTERS ═══════════ */
+/* ═══════════ COUNTERS — derive content counts, fetch live GitHub stars ═══════════ */
+const countSources={
+projects:document.querySelectorAll('#projects .proj-list > .feat-card').length,
+learning:document.querySelectorAll('#notes .shelf-items > .note-card').length,
+patterns:document.querySelectorAll('#dpStage .dp-chip').length
+};
+document.querySelectorAll('[data-counter]').forEach(el=>{
+const count=countSources[el.dataset.counter];
+if(Number.isInteger(count))el.dataset.count=String(count);
+});
 const cio=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
 if(e.isIntersecting){
@@ -1671,7 +1693,44 @@ tick();cio.unobserve(el);
 }
 });
 },{threshold:0.5});
-document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+function observeCounter(el){if(el&&el.dataset.count!==undefined)cio.observe(el);}
+document.querySelectorAll('[data-counter]:not([data-counter="githubStars"])').forEach(observeCounter);
+async function loadGitHubStats(){
+const stat=document.getElementById('githubStarsStat');
+const countEl=document.getElementById('githubStars');
+const grid=document.getElementById('statsGrid');
+const patternBadge=document.getElementById('patternStars');
+try{
+let nextUrl='https://api.github.com/users/alireza-haeri/repos?per_page=100&type=owner';
+const repos=[];
+while(nextUrl){
+const response=await fetch(nextUrl,{headers:{Accept:'application/vnd.github+json'}});
+if(!response.ok)throw new Error('GitHub API returned '+response.status);
+const page=await response.json();
+if(!Array.isArray(page))throw new Error('Unexpected GitHub API response');
+repos.push(...page);
+const link=response.headers.get('Link')||'';
+const next=link.match(/<([^>]+)>;\s*rel="?next"?/i);
+nextUrl=next?next[1]:null;
+}
+const ownedRepos=repos.filter(repo=>repo.owner?.login?.toLowerCase()==='alireza-haeri'&&!repo.fork);
+const totalStars=ownedRepos.reduce((sum,repo)=>sum+(Number(repo.stargazers_count)||0),0);
+countEl.dataset.count=String(totalStars);
+stat.hidden=false;
+stat.classList.add('rv','in');
+observeCounter(countEl);
+const patternsRepo=ownedRepos.find(repo=>repo.name.toLowerCase()==='persian-design-patterns');
+if(patternsRepo){
+patternBadge.textContent='★ '+patternsRepo.stargazers_count;
+patternBadge.setAttribute('aria-label',patternsRepo.stargazers_count+' GitHub stars for Persian Design Patterns');
+}else patternBadge.remove();
+}catch(error){
+stat.remove();
+patternBadge.remove();
+grid?.classList.add('stats-grid--compact');
+}
+}
+loadGitHubStats();
 /* ═══════════ BOOKSHELF SPINE PROGRESS ═══════════ */
 const roadProg=document.getElementById('roadProg');
 window.addEventListener('scroll',()=>{

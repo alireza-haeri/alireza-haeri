@@ -36,7 +36,7 @@ xUnit · FluentAssertions · NSubstitute · WebApplicationFactory
       <td>
         A modular personal productivity platform with authentication, testing strategy, and production-minded architecture.
         <br/>
-        🌐 <a href="https://samarpln.ir">Landing</a> · 📡 <a href="https://api.samarpln.ir/scalar">API Docs</a> · 🖥️ <a href="https://app.samarpln.ir">Web App</a>
+        📦 <a href="https://github.com/alireza-haeri/SamarPlanner">Source code</a> · ⚠️ <strong>Hosted demo temporarily unavailable.</strong>
         <br/><br/>
         <img src="https://img.shields.io/badge/Modular_Monolith-512BD4?style=flat-square"/>
         <img src="https://img.shields.io/badge/DDD-512BD4?style=flat-square"/>
